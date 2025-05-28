@@ -1,40 +1,57 @@
 # Tianyuan Liu - Personal Website
 
-This repository contains the source code for the personal website of Tianyuan Liu, a Computational Genomics Researcher.
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Ftianyuan-liu.github.io)](https://tianyuan-liu.github.io)
 
-The website serves as an online portfolio showcasing research focus, selected publications, projects, experience, technical skills, and contact information.
+Personal portfolio website for Tianyuan Liu, a Computational Genomics Researcher at the Spanish National Research Council (CSIC-UV), specializing in long-read sequencing technologies and transcriptome analysis.
+
+🌐 **Live Site:** [tianyuan-liu.github.io](https://tianyuan-liu.github.io)
+
+## Overview
+
+This responsive portfolio website showcases:
+- Research focus on long-read multiomics and isoform regulatory biology
+- Selected publications and contributions to major genomics tools
+- Open-source projects including SQANTI3, PaintOmics 4, and MirCure
+- Professional experience and technical expertise
 
 ## Features
 
-*   **Responsive Design:** Adapts to various screen sizes (desktop, tablet, mobile).
-*   **Navigation:** Sticky navigation bar with smooth scrolling to different sections.
-*   **Sections:** Dedicated sections for About, Research Focus, Publications, Projects, Experience, Technical Skills, and Contact.
-*   **Dynamic Elements:** Fade-in animations for sections on scroll.
-*   **Contact Information:** Easy access to email, location, institution, and online profiles (GitHub, Google Scholar, X, Bluesky, YouTube).
-*   **Project Showcase:** Highlights major and participating projects with descriptions and links.
+- **Responsive Design** - Optimized for desktop, tablet, and mobile
+- **Smooth Navigation** - Sticky navigation with animated scrolling
+- **Interactive Elements** - Fade-in animations and hover effects
+- **Modern UI** - Clean design with professional typography and color scheme
+- **Contact Integration** - Direct links to academic profiles and social media
 
-## Technologies Used
+## Tech Stack
 
-*   HTML5
-*   CSS3
-*   JavaScript
-*   Font Awesome for icons
-*   Google Fonts
+- HTML5 & CSS3
+- Vanilla JavaScript
+- Font Awesome icons
+- Google Fonts (Crimson Text & Source Sans Pro)
 
-## Setup
-
-To view the website locally, simply open the `index.html` file in your web browser.
+## Local Development
 
 ```bash
 git clone https://github.com/TianYuan-Liu/tianyuan-liu.github.io.git
 cd tianyuan-liu.github.io
-open index.html # Or use your preferred browser
+open index.html  # Opens in default browser
 ```
 
-## Contributing
+## Project Structure
 
-This is a personal portfolio website, so contributions are not expected. However, if you find any issues or have suggestions, feel free to open an issue.
+```
+├── index.html          # Main HTML file
+├── script.js           # JavaScript for interactivity
+└── README.md          # Project documentation
+```
 
 ## Links
 
-*   [GitHub Profile](https://github.com/TianYuan-Liu) 
+- 🌐 [Live Website](https://tianyuan-liu.github.io)
+- 👤 [GitHub Profile](https://github.com/TianYuan-Liu)
+- 🎓 [Google Scholar](https://scholar.google.com/citations?hl=en&user=RGKxI9oAAAAJ)
+- 🔬 [LongTREC Project](https://longtrec.eu/individual-research-projects/project-11/)
+
+---
+
+*Built with ❤️ for open science and computational genomics research* 
