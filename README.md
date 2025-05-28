@@ -35,6 +35,6 @@ open index.html # Or use your preferred browser
 
 This is a personal portfolio website, so contributions are not expected. However, if you find any issues or have suggestions, feel free to open an issue.
 
-## License
+## Links
 
-(Specify license if applicable, otherwise remove this section) 
+*   [GitHub Profile](https://github.com/TianYuan-Liu) 
