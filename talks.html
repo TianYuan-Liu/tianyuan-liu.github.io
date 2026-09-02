@@ -85,6 +85,9 @@
     .ph { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1024px; }
     /* 3:2, not 4:3 — longtrec.jpg is 840x560 and 4:3 cut the far-left colleague */
     .ph img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    /* the group photo spans both columns; 16:9 keeps a wide row from towering */
+    .ph .wide { grid-column: 1 / -1; }
+    .ph .wide img { aspect-ratio: 16 / 9; }
     .cap { margin-top: 12px; font-size: 13px; line-height: 20px; color: var(--mute); }
     .cap b { display: block; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
 
@@ -133,6 +136,7 @@
     @media (max-width: 900px) {
       .sec.photos { padding: 20px 20px 24px; }
       .ph { grid-template-columns: 1fr; gap: 20px; }
+      .ph .wide img { aspect-ratio: 3 / 2; }
       .t { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
       .tt { font-size: 15px; line-height: 23px; }
     }  </style>
@@ -187,6 +191,11 @@
           <img src="course.jpg" alt="VALT Summer Course in Long-read Bioinformatics, València">
           <div class="cap"><b>VALT Summer Course, València</b>
             June 2026 — three days of hands-on long-read analysis at I2SysBio.</div>
+        </div>
+        <div class="wide">
+          <img src="bsc.jpg" alt="The longTREC cohort at the Barcelona Supercomputing Center">
+          <div class="cap"><b>longTREC at the Barcelona Supercomputing Center</b>
+            February – March 2025 — the mid-term meeting, on the gallery above the machine hall.</div>
         </div>
       </div>
     </section>
