@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research — Tianyuan Liu</title>
+  <meta name="description" content="Tianyuan Liu — PhD candidate in bioinformatics at I2SysBio (CSIC – Universitat de València). Long-read sequencing, single-molecule epigenomics, and AI for interpretation.">
+  <meta name="author" content="Tianyuan Liu">
+  <link rel="canonical" href="https://tianyuan-liu.github.io/research.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Research — Tianyuan Liu">
+  <meta property="og:description" content="Tianyuan Liu — PhD candidate in bioinformatics at I2SysBio (CSIC – Universitat de València). Long-read sequencing, single-molecule epigenomics, and AI for interpretation.">
+  <meta property="og:image" content="https://tianyuan-liu.github.io/portrait.jpg">
+  <meta property="og:url" content="https://tianyuan-liu.github.io/research.html">
+  <link rel="icon" href="/favicon/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <meta name="theme-color" content="#16302A">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap">
+  <style>
+    :root {
+      /* pine, bone and copper. The figure, the mark and the page all use these
+         three and nothing else. Three greys, not five: ink for titles, body for
+         reading text, mute for labels, dates and captions. */
+      --paper:#FBFAF7; --surf:#EFEDE4;
+      --rule:#DFDBCF;  --rule2:#EAE7DC;
+      --ink:#16302A;   --body:#3C4A44; --mute:#59645F;
+      --hair:#CFC9B8;
+    }
+    body { margin: 0; background: var(--paper); }
+    .pg { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+          background: var(--paper); color: var(--ink); display: grid;
+          grid-template-columns: 320px minmax(0, 1fr); min-height: 100vh;
+          -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, .lede, .one, .say p, .sub, .rttl { text-wrap: balance; }
+    .rdsc, .ctxt, .dsc, .val, .nt, .tt, .pdt, .cap { text-wrap: pretty; }
+
+    /* ---- left rail: brand, navigation, facts about this page, contact ------ */
+    .rail { position: sticky; top: 0; height: 100vh; align-self: start; overflow: auto;
+            border-right: 1px solid var(--rule); background: var(--surf);
+            display: flex; flex-direction: column; }
+    .brand { padding: 26px 32px 24px; border-bottom: 1px solid var(--rule); }
+    .bn { font-size: 17px; font-weight: 500; letter-spacing: -0.005em; }
+    .bc { font-size: 13px; font-weight: 300; color: var(--mute); letter-spacing: 0.16em;
+          margin-top: 3px; }
+    .nav { padding: 12px 0 14px; border-bottom: 1px solid var(--rule); }
+    .nv { display: block; padding: 8px 32px 8px 29px; font-size: 15px; line-height: 21px;
+          color: var(--body); border-left: 3px solid transparent; }
+    .nv:hover { color: var(--ink); background: var(--paper); }
+    .nv.on { color: var(--ink); border-left-color: var(--acc); font-weight: 500; }
+    .rc { padding: 22px 32px 24px; border-bottom: 1px solid var(--rule); }
+    .lab { font-size: 12px; line-height: 16px; color: var(--mute); margin-bottom: 6px; }
+    .val { font-size: 14px; line-height: 21px; color: var(--ink); }
+    .val a { border-bottom: 1px solid var(--hair); }
+    .val a:hover { color: var(--accd); border-color: var(--accd); }
+    .rfoot { margin-top: auto; padding: 22px 32px 26px; border-top: 1px solid var(--rule); }
+    .rfoot a { display: block; font-size: 14px; line-height: 21px;
+               border-bottom: 1px solid var(--hair); width: fit-content; }
+    .rfoot a:hover { color: var(--accd); border-color: var(--accd); }
+    .fl { display: flex; gap: 16px; margin: 8px 0 14px; }
+    .fl a { display: inline; font-size: 13px; line-height: 18px; color: var(--accd); }
+    .fl a:hover { color: var(--ink); border-color: var(--ink); }
+    .upd { margin-top: 12px; font-size: 12px; line-height: 17px; color: var(--mute); }
+
+    /* ---- page head ------------------------------------------------------------ */
+    .head { padding: 52px 48px 44px; border-bottom: 1px solid var(--rule); }
+    h1 { font-size: 64px; font-weight: 200; letter-spacing: -0.03em; line-height: 1.04;
+         margin: 0 0 20px; }
+    .lede { max-width: 720px; font-size: 22px; line-height: 34px; font-weight: 200;
+            color: var(--body); }
+    .lede i { color: var(--ink); }
+    .sec { padding: 48px 48px 52px; border-bottom: 1px solid var(--rule); }
+    h2 { font-size: 15px; font-weight: 500; letter-spacing: 0.01em; color: var(--mute);
+         margin: 0 0 20px; }
+    .more { font-size: 15px; line-height: 22px; border-bottom: 1px solid var(--hair); }
+    .more:hover { color: var(--accd); border-color: var(--accd); }
+
+
+    /* ---- a thread: number, title, one line, then two short columns ------------- */
+    .th { display: grid; grid-template-columns: 88px minmax(0,1fr);
+          padding: 44px 48px 46px; border-bottom: 1px solid var(--rule); }
+    .tnum { font-size: 32px; font-weight: 200; color: var(--acc); line-height: 1; padding-top: 4px; }
+    .th h2 { font-size: 32px; font-weight: 300; letter-spacing: -0.018em; line-height: 1.18;
+             margin: 0 0 14px; max-width: 760px; color: var(--ink); }
+    .one { max-width: 720px; font-size: 19px; line-height: 30px; font-weight: 300;
+           color: var(--body); padding-bottom: 26px; border-bottom: 1px solid var(--rule2); }
+
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+            max-width: 900px; padding-top: 22px; }
+    .clab { font-size: 12px; color: var(--mute); margin-bottom: 8px; }
+    .clab.b { color: var(--accd); font-weight: 500; }
+    .ctxt { font-size: 15px; line-height: 24px; color: var(--body); }
+
+    .out { margin-top: 30px; max-width: 900px; }
+    .olab { font-size: 12px; color: var(--mute); padding-bottom: 6px;
+            border-bottom: 1px solid var(--rule); }
+    .o { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 24px;
+        align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--rule2); }
+    .ot { font-size: 15px; line-height: 22px; }
+    .ov { font-size: 13px; color: var(--mute); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .o:hover .ot { color: var(--acc); }
+  
+    .nv .sm { display: none; }
+    @media (max-width: 900px) {
+      .pg { display: flex; flex-direction: column; min-height: 100vh; }
+      .rail { display: contents; }
+      .brand { order: 0; display: flex; align-items: baseline; gap: 12px; padding: 16px 20px 14px;
+               background: var(--surf); }
+      .bn { font-size: 16px; } .bc { margin: 0; font-size: 12px; }
+      .nav { order: 1; display: flex; overflow-x: auto; padding: 0; background: var(--surf);
+             scrollbar-width: none; }
+      .nav::-webkit-scrollbar { display: none; }
+      .nv { flex: none; padding: 12px 5px; font-size: 13px; line-height: 20px;
+            border-left: none; border-bottom: 2px solid transparent; }
+      .nv .lg { display: none; } .nv .sm { display: inline; }
+      .nv:first-child { padding-left: 20px; } .nv:last-child { padding-right: 20px; }
+      .nv.on { border-bottom-color: var(--acc); } .nv:hover { background: none; }
+      main { order: 2; }
+      .rc { order: 3; padding: 18px 20px 20px; background: var(--surf); }
+      .rfoot { order: 4; margin: 0; padding: 22px 20px 30px; background: var(--surf); }
+      .head { padding: 26px 20px 24px; }
+      h1 { font-size: 40px; margin-bottom: 14px; }
+      .lede { font-size: 17px; line-height: 27px; font-weight: 300; }
+      .sec { padding: 26px 20px 30px; }
+      .foot { padding: 24px 20px 36px; }
+    }
+
+    @media (max-width: 900px) {
+      .th { grid-template-columns: 1fr; padding: 26px 20px 30px; }
+      .tnum { font-size: 22px; margin-bottom: 10px; }
+      .th h2 { font-size: 24px; }
+      .one { font-size: 16px; line-height: 26px; padding-bottom: 20px; }
+      .pair { grid-template-columns: 1fr; gap: 20px; }
+      .o { grid-template-columns: 1fr; gap: 2px; }
+      .ov { white-space: normal; }
+    }  </style>
+</head>
+<body>
+<div class="pg" style="--acc: #A8562F; --accd: #96512e">
+
+  <aside class="rail">
+    <div class="brand">
+      <div class="bn">Tianyuan Liu</div>
+      <div class="bc">刘天元</div>
+    </div>
+    <nav class="nav">
+      <a class="nv" href="index.html">Home</a>
+      <a class="nv on" href="research.html" aria-current="page">Research</a>
+      <a class="nv" href="publications.html">Publications</a>
+      <a class="nv" href="software.html">Software</a>
+      <a class="nv" href="talks.html"><span class="lg">Talks &amp; teaching</span><span class="sm">Talks</span></a>
+      <a class="nv" href="elsewhere.html">Elsewhere</a>
+    </nav>
+    <div class="rc">
+      <div class="lab">Funding</div>
+      <div class="val">EU Horizon MSCA · longTREC<br>Grant 101072892</div>
+    </div>
+    <div class="rc">
+      <div class="lab">Supervisor</div>
+      <div class="val">Prof. Ana Conesa</div>
+    </div>
+    <div class="rc">
+      <div class="lab">Methods</div>
+      <div class="val">PacBio · Nanopore · Fiber-seq · machine learning · knowledge graphs</div>
+    </div>
+    <div class="rfoot">
+      <a href="mailto:tianyuan.liu@csic.es">tianyuan.liu@csic.es</a>
+      <div class="fl"><a href="https://scholar.google.com/citations?user=RGKxI9oAAAAJ" target="_blank" rel="noopener">Scholar</a><a href="https://orcid.org/0000-0002-8561-6239" target="_blank" rel="noopener">ORCID</a><a href="https://github.com/TianYuan-Liu" target="_blank" rel="noopener">GitHub</a></div>
+      <a href="tianyuan_liu_cv.pdf">Curriculum vitae (PDF)</a>
+      <div class="upd">Updated September 2026</div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="head">
+      <h1>Research</h1>
+      <div class="lede">Three threads, one gap: between what a sequencer <i>reports</i> and
+        what a biologist can defend.</div>
+    </section>
+
+    
+      <section class="th">
+        <div class="tnum">01</div>
+        <div>
+          <h2>Making transcriptome quality measurable</h2>
+          <div class="one">Every long-read pipeline reports a different number of isoforms, and none of them can tell you which ones are wrong.</div>
+          <div class="pair">
+            <div>
+              <div class="clab">The problem</div>
+              <div class="ctxt">A real isoform and an artefact look identical in a long-read catalogue. Without a ground truth, "40,000 novel isoforms" is a claim, not a result.</div>
+            </div>
+            <div>
+              <div class="clab b">What I built</div>
+              <div class="ctxt">TUSCO — genes with a single known isoform, so any extra call at one of them is a false discovery by construction. Quality becomes a number. It is now the evaluation layer inside SQANTI3.</div>
+            </div>
+          </div>
+          <div class="out">
+            <div class="olab">Selected output</div>
+            
+              <a class="o" href="https://doi.org/10.1038/s41467-026-72089-1" target="_blank" rel="noopener">
+                <div class="ot">TUSCO: endogenous single-isoform controls</div>
+                <div class="ov">Nature Communications, 2026 · first author</div>
+              </a>
+            
+              <a class="o" href="https://doi.org/10.1038/s41592-024-02229-2" target="_blank" rel="noopener">
+                <div class="ot">SQANTI3: curation of long-read transcriptomes</div>
+                <div class="ov">Nature Methods, 2024 · co-author</div>
+              </a>
+            
+              <a class="o" href="https://doi.org/10.1038/s41576-025-00828-z" target="_blank" rel="noopener">
+                <div class="ot">Transcriptomics in the era of long-read sequencing</div>
+                <div class="ov">Nature Reviews Genetics, 2025 · co-first author</div>
+              </a>
+            
+          </div>
+        </div>
+      </section>
+    
+      <section class="th">
+        <div class="tnum">02</div>
+        <div>
+          <h2>Learning chromatin state from single molecules</h2>
+          <div class="one">Structure and regulation are usually measured on different molecules and correlated afterwards.</div>
+          <div class="pair">
+            <div>
+              <div class="clab">The problem</div>
+              <div class="ctxt">A catalogue says which isoforms exist, not why one is expressed. Native long reads carry methylation, nucleosomes and occupancy on the same molecule as the transcript.</div>
+            </div>
+            <div>
+              <div class="clab b">What I built</div>
+              <div class="ctxt">SQANTI-epi — one coordinate system for all of it, with a machine-learning model scoring accessibility per molecule. It is judged under a protocol frozen before the numbers are seen.</div>
+            </div>
+          </div>
+          <div class="out">
+            <div class="olab">Selected output</div>
+            
+              <a class="o" href="https://doi.org/10.1038/s41588-024-02038-5" target="_blank" rel="noopener">
+                <div class="ot">Profiling the epigenome using long-read sequencing</div>
+                <div class="ov">Nature Genetics, 2025 · first author</div>
+              </a>
+            
+              <a class="o" >
+                <div class="ot">SQANTI-epi — talk, HiTSeq track</div>
+                <div class="ov">ISMB 2026 · lead developer</div>
+              </a>
+            
+              <a class="o" >
+                <div class="ot">Wet-lab secondment on single-molecule chromatin assays</div>
+                <div class="ov">IIT Milan, 2024–25</div>
+              </a>
+            
+          </div>
+        </div>
+      </section>
+    
+      <section class="th">
+        <div class="tnum">03</div>
+        <div>
+          <h2>Making AI interpretation accountable</h2>
+          <div class="one">A language model will write you a beautiful biological story. That is exactly the problem.</div>
+          <div class="pair">
+            <div>
+              <div class="clab">The problem</div>
+              <div class="ctxt">The last step of an omics study is the least controlled. A gene list becomes a narrative, judged on whether it sounds plausible rather than on the evidence under it.</div>
+            </div>
+            <div>
+              <div class="clab b">What I built</div>
+              <div class="ctxt">TELLME and PaintOmics AI — agents that cite what they claim, keep only the links the data confirms, and delete every unsupported gene, PMID and functional claim before you see it.</div>
+            </div>
+          </div>
+          <div class="out">
+            <div class="olab">Selected output</div>
+            
+              <a class="o" >
+                <div class="ot">TELLME</div>
+                <div class="ov">ELIXIR project, 2026 · lead developer</div>
+              </a>
+            
+              <a class="o" href="https://paintomics.org" target="_blank" rel="noopener">
+                <div class="ot">PaintOmics AI</div>
+                <div class="ov">paintomics.org · lead developer</div>
+              </a>
+            
+              <a class="o" href="https://doi.org/10.1093/nar/gkac352" target="_blank" rel="noopener">
+                <div class="ot">PaintOmics 4</div>
+                <div class="ov">Nucleic Acids Research, 2022 · first author</div>
+              </a>
+            
+          </div>
+        </div>
+      </section>
+    
+  </main>
+
+</div>
+
+</body>
+</html>

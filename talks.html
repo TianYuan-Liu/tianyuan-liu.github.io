@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Talks & teaching — Tianyuan Liu</title>
+  <meta name="description" content="Tianyuan Liu — PhD candidate in bioinformatics at I2SysBio (CSIC – Universitat de València). Long-read sequencing, single-molecule epigenomics, and AI for interpretation.">
+  <meta name="author" content="Tianyuan Liu">
+  <link rel="canonical" href="https://tianyuan-liu.github.io/talks.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Talks & teaching — Tianyuan Liu">
+  <meta property="og:description" content="Tianyuan Liu — PhD candidate in bioinformatics at I2SysBio (CSIC – Universitat de València). Long-read sequencing, single-molecule epigenomics, and AI for interpretation.">
+  <meta property="og:image" content="https://tianyuan-liu.github.io/portrait.jpg">
+  <meta property="og:url" content="https://tianyuan-liu.github.io/talks.html">
+  <link rel="icon" href="/favicon/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <meta name="theme-color" content="#16302A">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap">
+  <style>
+    :root {
+      /* pine, bone and copper. The figure, the mark and the page all use these
+         three and nothing else. Three greys, not five: ink for titles, body for
+         reading text, mute for labels, dates and captions. */
+      --paper:#FBFAF7; --surf:#EFEDE4;
+      --rule:#DFDBCF;  --rule2:#EAE7DC;
+      --ink:#16302A;   --body:#3C4A44; --mute:#59645F;
+      --hair:#CFC9B8;
+    }
+    body { margin: 0; background: var(--paper); }
+    .pg { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+          background: var(--paper); color: var(--ink); display: grid;
+          grid-template-columns: 320px minmax(0, 1fr); min-height: 100vh;
+          -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, .lede, .one, .say p, .sub, .rttl { text-wrap: balance; }
+    .rdsc, .ctxt, .dsc, .val, .nt, .tt, .pdt, .cap { text-wrap: pretty; }
+
+    /* ---- left rail: brand, navigation, facts about this page, contact ------ */
+    .rail { position: sticky; top: 0; height: 100vh; align-self: start; overflow: auto;
+            border-right: 1px solid var(--rule); background: var(--surf);
+            display: flex; flex-direction: column; }
+    .brand { padding: 26px 32px 24px; border-bottom: 1px solid var(--rule); }
+    .bn { font-size: 17px; font-weight: 500; letter-spacing: -0.005em; }
+    .bc { font-size: 13px; font-weight: 300; color: var(--mute); letter-spacing: 0.16em;
+          margin-top: 3px; }
+    .nav { padding: 12px 0 14px; border-bottom: 1px solid var(--rule); }
+    .nv { display: block; padding: 8px 32px 8px 29px; font-size: 15px; line-height: 21px;
+          color: var(--body); border-left: 3px solid transparent; }
+    .nv:hover { color: var(--ink); background: var(--paper); }
+    .nv.on { color: var(--ink); border-left-color: var(--acc); font-weight: 500; }
+    .rc { padding: 22px 32px 24px; border-bottom: 1px solid var(--rule); }
+    .lab { font-size: 12px; line-height: 16px; color: var(--mute); margin-bottom: 6px; }
+    .val { font-size: 14px; line-height: 21px; color: var(--ink); }
+    .val a { border-bottom: 1px solid var(--hair); }
+    .val a:hover { color: var(--accd); border-color: var(--accd); }
+    .rfoot { margin-top: auto; padding: 22px 32px 26px; border-top: 1px solid var(--rule); }
+    .rfoot a { display: block; font-size: 14px; line-height: 21px;
+               border-bottom: 1px solid var(--hair); width: fit-content; }
+    .rfoot a:hover { color: var(--accd); border-color: var(--accd); }
+    .fl { display: flex; gap: 16px; margin: 8px 0 14px; }
+    .fl a { display: inline; font-size: 13px; line-height: 18px; color: var(--accd); }
+    .fl a:hover { color: var(--ink); border-color: var(--ink); }
+    .upd { margin-top: 12px; font-size: 12px; line-height: 17px; color: var(--mute); }
+
+    /* ---- page head ------------------------------------------------------------ */
+    .head { padding: 52px 48px 44px; border-bottom: 1px solid var(--rule); }
+    h1 { font-size: 64px; font-weight: 200; letter-spacing: -0.03em; line-height: 1.04;
+         margin: 0 0 20px; }
+    .lede { max-width: 720px; font-size: 22px; line-height: 34px; font-weight: 200;
+            color: var(--body); }
+    .lede i { color: var(--ink); }
+    .sec { padding: 48px 48px 52px; border-bottom: 1px solid var(--rule); }
+    h2 { font-size: 15px; font-weight: 500; letter-spacing: 0.01em; color: var(--mute);
+         margin: 0 0 20px; }
+    .more { font-size: 15px; line-height: 22px; border-bottom: 1px solid var(--hair); }
+    .more:hover { color: var(--accd); border-color: var(--accd); }
+
+
+    .sec.photos { padding: 40px 48px 44px; }
+    .ph { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1024px; }
+    /* 3:2, not 4:3 — longtrec.jpg is 840x560 and 4:3 cut the far-left colleague */
+    .ph img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+    .cap { margin-top: 12px; font-size: 13px; line-height: 20px; color: var(--mute); }
+    .cap b { display: block; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+
+    /* one list idiom: 116px date column, hairlines, baseline-aligned, 1024 measure */
+    .t { display: grid; grid-template-columns: 116px minmax(0,1fr) 280px; gap: 24px;
+         padding: 13px 0; border-bottom: 1px solid var(--rule2); align-items: baseline;
+         max-width: 1024px; }
+    .t:first-of-type { border-top: 1px solid var(--rule); }
+    .tyr { font-size: 13px; color: var(--mute); font-variant-numeric: tabular-nums; }
+    .tt { font-size: 16px; line-height: 24px; }
+    .tw { font-size: 14px; line-height: 21px; color: var(--mute); }
+    .trole { font-size: 13px; color: var(--mute); margin-top: 2px; }
+  
+    .nv .sm { display: none; }
+    @media (max-width: 900px) {
+      .pg { display: flex; flex-direction: column; min-height: 100vh; }
+      .rail { display: contents; }
+      .brand { order: 0; display: flex; align-items: baseline; gap: 12px; padding: 16px 20px 14px;
+               background: var(--surf); }
+      .bn { font-size: 16px; } .bc { margin: 0; font-size: 12px; }
+      .nav { order: 1; display: flex; overflow-x: auto; padding: 0; background: var(--surf);
+             scrollbar-width: none; }
+      .nav::-webkit-scrollbar { display: none; }
+      .nv { flex: none; padding: 12px 5px; font-size: 13px; line-height: 20px;
+            border-left: none; border-bottom: 2px solid transparent; }
+      .nv .lg { display: none; } .nv .sm { display: inline; }
+      .nv:first-child { padding-left: 20px; } .nv:last-child { padding-right: 20px; }
+      .nv.on { border-bottom-color: var(--acc); } .nv:hover { background: none; }
+      main { order: 2; }
+      .rc { order: 3; padding: 18px 20px 20px; background: var(--surf); }
+      .rfoot { order: 4; margin: 0; padding: 22px 20px 30px; background: var(--surf); }
+      .head { padding: 26px 20px 24px; }
+      h1 { font-size: 40px; margin-bottom: 14px; }
+      .lede { font-size: 17px; line-height: 27px; font-weight: 300; }
+      .sec { padding: 26px 20px 30px; }
+      .foot { padding: 24px 20px 36px; }
+    }
+
+    @media (max-width: 900px) {
+      .sec.photos { padding: 20px 20px 24px; }
+      .ph { grid-template-columns: 1fr; gap: 20px; }
+      .t { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
+      .tt { font-size: 15px; line-height: 23px; }
+    }  </style>
+</head>
+<body>
+<div class="pg" style="--acc: #A8562F; --accd: #96512e">
+
+  <aside class="rail">
+    <div class="brand">
+      <div class="bn">Tianyuan Liu</div>
+      <div class="bc">刘天元</div>
+    </div>
+    <nav class="nav">
+      <a class="nv" href="index.html">Home</a>
+      <a class="nv" href="research.html">Research</a>
+      <a class="nv" href="publications.html">Publications</a>
+      <a class="nv" href="software.html">Software</a>
+      <a class="nv on" href="talks.html" aria-current="page"><span class="lg">Talks &amp; teaching</span><span class="sm">Talks</span></a>
+      <a class="nv" href="elsewhere.html">Elsewhere</a>
+    </nav>
+    <div class="rc">
+      <div class="lab">Network</div>
+      <div class="val">longTREC — an EU Horizon MSCA doctoral network training twelve doctoral candidates across European computational biology labs.</div>
+    </div>
+    <div class="rc">
+      <div class="lab">Secondment</div>
+      <div class="val">Istituto Italiano di Tecnologia, Milan — Dr Francesco Nicassio’s lab, December 2024 to February 2025</div>
+    </div>
+    <div class="rfoot">
+      <a href="mailto:tianyuan.liu@csic.es">tianyuan.liu@csic.es</a>
+      <div class="fl"><a href="https://scholar.google.com/citations?user=RGKxI9oAAAAJ" target="_blank" rel="noopener">Scholar</a><a href="https://orcid.org/0000-0002-8561-6239" target="_blank" rel="noopener">ORCID</a><a href="https://github.com/TianYuan-Liu" target="_blank" rel="noopener">GitHub</a></div>
+      <a href="tianyuan_liu_cv.pdf">Curriculum vitae (PDF)</a>
+      <div class="upd">Updated September 2026</div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="head">
+      <h1>Talks &amp; teaching</h1>
+      <div class="lede">Conferences, courses and the longTREC doctoral network. Research is
+        done with other people, so this page is mostly other people.</div>
+    </section>
+
+    <section class="sec photos">
+      <div class="ph">
+        <div>
+          <img src="longtrec.jpg" alt="The longTREC doctoral network cohort">
+          <div class="cap"><b>longTREC doctoral network</b>
+            Twelve doctoral candidates, one Horizon MSCA doctoral network.</div>
+        </div>
+        <div>
+          <img src="course.jpg" alt="VALT Summer Course in Long-read Bioinformatics, València">
+          <div class="cap"><b>VALT Summer Course, València</b>
+            June 2026 — three days of hands-on long-read analysis at I2SysBio.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec">
+      <h2>Conferences</h2>
+      
+        <div class="t">
+          <div class="tyr">2026</div>
+          <div>
+            <div class="tt">AI-assisted improvements in code efficiency and sustainability</div>
+            <div class="trole">Invited workshop</div>
+          </div>
+          <div class="tw">SEBiBC 2026, Toledo, 11–13 November — upcoming</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2026</div>
+          <div>
+            <div class="tt">SQANTI-epi: quality control and benchmarking for single-molecule chromatin</div>
+            <div class="trole">Abstract submitted, decision pending</div>
+          </div>
+          <div class="tw">LRUA26, Uppsala, 2–4 November — upcoming</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2026</div>
+          <div>
+            <div class="tt">SQANTI-epi: QC, benchmarking and regulatory-element calling</div>
+            <div class="trole">Abstract submitted, decision pending</div>
+          </div>
+          <div class="tw">CSH Asia Genome Biology, Suzhou, 12–16 October — upcoming</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2026</div>
+          <div>
+            <div class="tt">SQANTI-epi: functional and quality annotation of single-molecule epigenomic data</div>
+            <div class="trole">Talk, HiTSeq track</div>
+          </div>
+          <div class="tw">ISMB 2026, Washington DC, 14 July</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2026</div>
+          <div>
+            <div class="tt">SQANTI-epi: linking chromatin state to isoform regulation</div>
+            <div class="trole">Talk</div>
+          </div>
+          <div class="tw">VALT Symposium, València, 29 June</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2025</div>
+          <div>
+            <div class="tt">TUSCO: a framework for evaluating transcriptome reconstruction quality</div>
+            <div class="trole">Poster</div>
+          </div>
+          <div class="tw">JBI 2025, Madrid, October</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2025</div>
+          <div>
+            <div class="tt">TUSCO: benchmarking transcriptome reconstruction</div>
+            <div class="trole">Short talk, iRNA track</div>
+          </div>
+          <div class="tw">ISMB/ECCB 2025, Liverpool, 20–24 July</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2024</div>
+          <div>
+            <div class="tt">BUGSI: a framework for evaluating transcriptome quality</div>
+            <div class="trole">Poster · speaker and coordinator, longTREC workshop on long-read transcriptomics</div>
+          </div>
+          <div class="tw">LRUA24 — Long-Read Sequencing Uppsala, 21–23 October</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2024</div>
+          <div>
+            <div class="tt">BUGSI: benchmarking universal genes with single isoforms</div>
+            <div class="trole">Poster and flash talk</div>
+          </div>
+          <div class="tw">1st SEBiBC Congress, 16–18 October</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2024</div>
+          <div>
+            <div class="tt">SQANTI-SIM: controlled transcript novelty for lrRNA-seq benchmarking</div>
+            <div class="trole">Poster</div>
+          </div>
+          <div class="tw">ECCB 2024, Turku, 16–20 September</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2022</div>
+          <div>
+            <div class="tt">PaintOmics 4: integrative multi-omics analysis across pathway databases</div>
+            <div class="trole">Poster</div>
+          </div>
+          <div class="tw">ECCB 2022, Sitges, 18–21 September</div>
+        </div>
+      
+    </section>
+
+    <section class="sec">
+      <h2>Teaching and supervision</h2>
+      
+        <div class="t">
+          <div class="tyr">2026</div>
+          <div>
+            <div class="tt">Hands-on AI agents workshop for the institute</div>
+            <div class="trole">Co-instructor</div>
+          </div>
+          <div class="tw">I2SysBio, València, 28 July</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2026</div>
+          <div>
+            <div class="tt">VALT Summer Course in Long-read Bioinformatics</div>
+            <div class="trole">Instructor — QC metrics, read mapping, SQANTI-reads</div>
+          </div>
+          <div class="tw">I2SysBio, València, 25–27 June</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2026</div>
+          <div>
+            <div class="tt">MSc thesis internship: AlphaFold modelling of novel long-read transcripts</div>
+            <div class="trole">Day-to-day supervisor</div>
+          </div>
+          <div class="tw">ISCIII bioinformatics master, hosted at I2SysBio</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2025</div>
+          <div>
+            <div class="tt">longTREC Bioinformatics Summer School</div>
+            <div class="trole">Instructor — long-read mappers and QC with SQANTI-reads</div>
+          </div>
+          <div class="tw">Earlham Institute, Norwich, 14–17 July</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2024–25</div>
+          <div>
+            <div class="tt">BSc thesis: biological replicates in SQANTI-SIM</div>
+            <div class="trole">Co-supervisor</div>
+          </div>
+          <div class="tw">Universidad Politécnica de Madrid, hosted at I2SysBio</div>
+        </div>
+      
+    </section>
+
+    <section class="sec" style="border-bottom:none">
+      <h2>longTREC</h2>
+      
+        <div class="t">
+          <div class="tyr">2026</div>
+          <div>
+            <div class="tt">longTREC closing meeting</div>
+            <div class="trole">Participant — mini-grant proposal</div>
+          </div>
+          <div class="tw">I2SysBio, València, 2–3 July</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2025</div>
+          <div>
+            <div class="tt">longTREC Mid-term meeting</div>
+            <div class="trole">Participant — software-engineering and presentation training</div>
+          </div>
+          <div class="tw">BSC and CRG, Barcelona, 24 February – 4 March</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2024</div>
+          <div>
+            <div class="tt">longTREC Fellows’ retreat</div>
+            <div class="trole">Participant — project presentation</div>
+          </div>
+          <div class="tw">Stockholm University, 24–30 October</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2024</div>
+          <div>
+            <div class="tt">longTREC Focus on Research meeting</div>
+            <div class="trole">Participant — project talk and mid-term review</div>
+          </div>
+          <div class="tw">Université Côte d’Azur and IPMC, Nice, 9–15 March</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2023</div>
+          <div>
+            <div class="tt">longTREC Welcome Retreat</div>
+            <div class="trole">Participant — doctoral candidate presentation</div>
+          </div>
+          <div class="tw">I2SysBio and Jardí Botànic, València, 27 November – 1 December</div>
+        </div>
+      
+        <div class="t">
+          <div class="tyr">2023–25</div>
+          <div>
+            <div class="tt">longTREC journal club and seminar series</div>
+            <div class="trole">Coordinator</div>
+          </div>
+          <div class="tw">Online</div>
+        </div>
+      
+    </section>
+  </main>
+
+</div>
+
+</body>
+</html>

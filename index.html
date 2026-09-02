@@ -1,1251 +1,326 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tianyuan Liu - Computational Genomics Researcher</title>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.75;
-            color: #2c3e50;
-            background-color: #fafbfc;
-            font-size: 16px;
-            font-weight: 400;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        /* Header Styles */
-        header {
-            background: linear-gradient(135deg, #1a365d 0%, #2d3748 50%, #1e3c72 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.15);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="80" cy="40" r="0.5" fill="rgba(255,255,255,0.03)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.04)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
-            opacity: 0.2;
-        }
-        
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #3182ce, #805ad5, #38a169);
-            opacity: 0.9;
-        }
-
-        .profile-section {
-            position: relative;
-            z-index: 1;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-family: 'Crimson Text', serif;
-            font-size: 4rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            font-weight: 300;
-            opacity: 0.95;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-            line-height: 1.4;
-        }
-
-        .affiliation {
-            font-size: 1.15rem;
-            font-weight: 400;
-            opacity: 0.85;
-            margin-bottom: 35px;
-            letter-spacing: 0.3px;
-            line-height: 1.5;
-        }
-
-        .contact-info-header {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
-
-        .contact-info-header .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: rgba(255,255,255,0.95);
-            font-size: 1rem;
-            padding: 8px 16px;
-            border-radius: 25px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .contact-info-header .contact-item:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-2px);
-        }
-
-        .contact-info-header a {
-            color: rgba(255,255,255,0.95);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info-header a:hover {
-            color: white;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        nav.scrolled {
-            padding: 0;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.12);
-            background: rgba(255, 255, 255, 0.98);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav li {
-            margin: 0 3px;
-        }
-
-        nav a {
-            display: block;
-            padding: 20px 24px;
-            text-decoration: none;
-            color: #2d3748;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-bottom: 3px solid transparent;
-            letter-spacing: 0.3px;
-            position: relative;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #1a365d, #3182ce);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(-50%);
-        }
-
-        nav a:hover::after, nav a.active::after {
-            width: 100%;
-        }
-
-        nav a:hover, nav a.active {
-            color: #1a365d;
-            background: rgba(26, 54, 93, 0.03);
-        }
-
-        /* Main Content */
-        main {
-            padding: 80px 0;
-            background: linear-gradient(to bottom, #fafbfc 0%, #f8fafc 100%);
-        }
-        
-        /* Section Styles */
-        section {
-            background: white;
-            margin-bottom: 50px;
-            padding: 60px 50px;
-            border-radius: 16px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.03), 0 1px 6px rgba(0,0,0,0.05);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(30, 60, 114, 0.1), transparent);
-        }
-        
-        section:hover {
-            box-shadow: 0 8px 40px rgba(0,0,0,0.06), 0 2px 12px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-
-        h2 {
-            font-family: 'Crimson Text', serif;
-            color: #1a365d;
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 40px;
-            position: relative;
-            padding-bottom: 20px;
-            letter-spacing: -0.5px;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #1a365d, #2d3748, #3182ce);
-            border-radius: 2px;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        section:hover h2::after {
-            width: 120px;
-        }
-
-        h3 {
-            color: #2d3748;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 18px;
-            letter-spacing: -0.2px;
-        }
-
-        p {
-            margin-bottom: 20px;
-            color: #4a5568;
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        /* About Section */
-        .about-content {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #4a5568;
-        }
-
-        .research-interests {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .interest-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            padding: 40px 30px;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .interest-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #1a365d, #3182ce, #805ad5);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .interest-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(26, 54, 93, 0.08);
-            background: white;
-        }
-
-        .interest-card:hover::before {
-            opacity: 1;
-        }
-
-        .interest-card i {
-            color: #1a365d;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #ebf4ff, #e6fffa);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            border: 2px solid rgba(26, 54, 93, 0.1);
-        }
-
-        .interest-card h3 {
-            color: #2d3748;
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            letter-spacing: -0.2px;
-        }
-
-        .interest-card p {
-            color: #4a5568;
-            font-size: 1rem;
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        /* Publications */
-        .publication {
-            border-left: 4px solid #1a365d;
-            padding: 30px 0 30px 35px;
-            margin-bottom: 40px;
-            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            background: transparent;
-        }
-
-        .publication::before {
-            content: '';
-            position: absolute;
-            left: -4px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #1a365d, #3182ce);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .publication:hover {
-            transform: translateX(8px);
-            background: linear-gradient(135deg, rgba(248, 250, 252, 0.8), rgba(237, 242, 247, 0.4));
-            border-radius: 12px;
-            padding-right: 25px;
-            box-shadow: 0 4px 20px rgba(26, 54, 93, 0.05);
-        }
-
-        .publication:hover::before {
-            opacity: 1;
-        }
-
-        .publication:last-child {
-            border-bottom: none;
-        }
-
-        .publication h3 {
-            font-family: 'Crimson Text', serif;
-            color: #2d3748;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            line-height: 1.5;
-            letter-spacing: -0.3px;
-        }
-
-        .publication h3 a {
-            text-decoration: none;
-            color: #2d3748;
-            background: linear-gradient(to right, #1a365d, #1a365d);
-            background-size: 0 2px;
-            background-position: 0 100%;
-            background-repeat: no-repeat;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 2px 0;
-        }
-
-        .publication h3 a:hover {
-            background-size: 100% 2px;
-            color: #1a365d;
-        }
-
-        .publication .authors {
-            color: #718096;
-            font-style: italic;
-            margin-bottom: 8px;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-        
-        .publication .authors .first-author {
-            color: #1a365d;
-            font-weight: 600;
-            background: linear-gradient(135deg, #ebf4ff, #e6fffa);
-            padding: 3px 8px;
-            border-radius: 6px;
-            font-style: normal;
-            border: 1px solid rgba(26, 54, 93, 0.1);
-        }
-
-        .publication .journal {
-            color: #1a365d;
-            font-weight: 600;
-            margin-bottom: 15px;
-            font-size: 1rem;
-            letter-spacing: 0.2px;
-        }
-
-        .publication .citation {
-            background: linear-gradient(135deg, #f7fafc, #edf2f7);
-            padding: 15px 20px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            color: #4a5568;
-            border-left: 3px solid #cbd5e0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-            font-style: italic;
-            line-height: 1.6;
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        .project-section {
-            margin-bottom: 40px;
-        }
-
-        .project-section h3 {
-            font-family: 'Crimson Text', serif;
-            color: #1e3c72;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-            position: relative;
-        }
-        
-        .project-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 80px;
-            height: 2px;
-            background: linear-gradient(90deg, #3498db, #9b59b6);
-        }
-
-        .project-card {
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            border-radius: 16px;
-            padding: 35px;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #fafbfc 0%, #f7fafc 100%);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.02);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #1a365d, #3182ce, #805ad5);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover {
-            border-color: #1a365d;
-            box-shadow: 0 12px 40px rgba(26, 54, 93, 0.08);
-            transform: translateY(-8px);
-            background: white;
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-card h4 {
-            color: #1a365d;
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            letter-spacing: -0.2px;
-        }
-        
-        .project-card h4 i {
-            background: linear-gradient(135deg, #1a365d, #3182ce);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 1.4rem;
-        }
-
-        .project-card p {
-            color: #4a5568;
-            font-size: 1rem;
-            margin-bottom: 18px;
-            line-height: 1.7;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background: linear-gradient(135deg, #1a365d, #2d3748);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 0.9rem;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.2);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn:hover {
-            background: linear-gradient(135deg, #2d3748, #1a365d);
-            box-shadow: 0 8px 25px rgba(26, 54, 93, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, #1a365d, #3182ce, #e2e8f0);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -33px;
-            top: 30px;
-            width: 15px;
-            height: 15px;
-            background: #1a365d;
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 0 0 3px #e2e8f0;
-        }
-
-        .timeline-date {
-            color: #1a365d;
-            font-weight: 600;
-            font-size: 1rem;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #ebf4ff, #e6fffa);
-            padding: 6px 12px;
-            border-radius: 20px;
-            display: inline-block;
-            border: 1px solid rgba(26, 54, 93, 0.1);
-        }
-
-        .timeline-item h3 {
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-
-        .timeline-item .institution {
-            color: #6b7280;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        /* Skills */
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .skill-category {
-            background: linear-gradient(135deg, #f8fafc, #edf2f7);
-            padding: 35px 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-        }
-
-        .skill-category h3 {
-            color: #1a365d;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 1.2rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, #1a365d, #2d3748);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 25px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(26, 54, 93, 0.2);
-        }
-
-        .skill-tag:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(26, 54, 93, 0.3);
-        }
-
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 50px;
-            align-items: start;
-        }
-
-        .contact-info {
-            line-height: 2.4;
-        }
-
-        .contact-info p {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            margin-bottom: 15px;
-            padding: 12px 18px;
-            background: linear-gradient(135deg, #f7fafc, #edf2f7);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .contact-info p:hover {
-            background: linear-gradient(135deg, #ebf4ff, #e6fffa);
-            border-left-color: #1a365d;
-            transform: translateX(5px);
-        }
-
-        .contact-info i {
-            width: 22px;
-            color: #1a365d;
-            font-size: 1.1rem;
-        }
-
-        .contact-info a {
-            color: #1a365d;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .contact-info a:hover {
-            color: #2d3748;
-            text-decoration: underline;
-        }
-
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #1a365d 0%, #2d3748 50%, #1a202c 100%);
-            color: white;
-            text-align: center;
-            padding: 60px 0 40px;
-            margin-top: 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        }
-
-        footer p {
-            margin-bottom: 15px;
-            color: rgba(255,255,255,0.8);
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        footer .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 30px;
-        }
-
-        footer .social-links a {
-            color: rgba(255,255,255,0.7);
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-            padding: 12px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        footer .social-links a:hover {
-            color: white;
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-3px);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 25px;
-            }
-
-            h1 {
-                font-size: 2.8rem;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 40px 30px;
-                margin-bottom: 30px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                padding: 0;
-            }
-
-            nav li {
-                margin: 0;
-                border-bottom: 1px solid rgba(226, 232, 240, 0.3);
-            }
-
-            nav li:last-child {
-                border-bottom: none;
-            }
-
-            nav a {
-                padding: 15px 25px;
-                border-bottom: none;
-                border-left: 3px solid transparent;
-                text-align: left;
-            }
-
-            nav a:hover, nav a.active {
-                border-left-color: #1a365d;
-                border-bottom: none;
-                background: rgba(26, 54, 93, 0.05);
-            }
-
-            nav a::after {
-                display: none;
-            }
-
-            .contact-info-header {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
-
-            .timeline {
-                padding-left: 25px;
-            }
-
-            .timeline::before {
-                left: 12px;
-            }
-
-            .timeline-item::before {
-                left: -25px;
-            }
-
-            .research-interests {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tianyuan Liu</title>
+  <meta name="description" content="Tianyuan Liu — PhD candidate in bioinformatics at I2SysBio (CSIC – Universitat de València). Long-read sequencing, single-molecule epigenomics, and AI for interpretation.">
+  <meta name="author" content="Tianyuan Liu">
+  <link rel="canonical" href="https://tianyuan-liu.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tianyuan Liu">
+  <meta property="og:description" content="Tianyuan Liu — PhD candidate in bioinformatics at I2SysBio (CSIC – Universitat de València). Long-read sequencing, single-molecule epigenomics, and AI for interpretation.">
+  <meta property="og:image" content="https://tianyuan-liu.github.io/portrait.jpg">
+  <meta property="og:url" content="https://tianyuan-liu.github.io/">
+  <link rel="icon" href="/favicon/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <meta name="theme-color" content="#16302A">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap">
+  <style>
+    :root {
+      /* pine, bone and copper. The figure, the mark and the page all use these
+         three and nothing else. Three greys, not five: ink for titles, body for
+         reading text, mute for labels, dates and captions. */
+      --paper:#FBFAF7; --surf:#EFEDE4;
+      --rule:#DFDBCF;  --rule2:#EAE7DC;
+      --ink:#16302A;   --body:#3C4A44; --mute:#59645F;
+      --hair:#CFC9B8;
+    }
+    body { margin: 0; background: var(--paper); }
+    .pg { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+          background: var(--paper); color: var(--ink); display: grid;
+          grid-template-columns: 320px minmax(0, 1fr); min-height: 100vh;
+          -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, .lede, .one, .say p, .sub, .rttl { text-wrap: balance; }
+    .rdsc, .ctxt, .dsc, .val, .nt, .tt, .pdt, .cap { text-wrap: pretty; }
+
+    /* ---- left rail: brand, navigation, facts about this page, contact ------ */
+    .rail { position: sticky; top: 0; height: 100vh; align-self: start; overflow: auto;
+            border-right: 1px solid var(--rule); background: var(--surf);
+            display: flex; flex-direction: column; }
+    .brand { padding: 26px 32px 24px; border-bottom: 1px solid var(--rule); }
+    .bn { font-size: 17px; font-weight: 500; letter-spacing: -0.005em; }
+    .bc { font-size: 13px; font-weight: 300; color: var(--mute); letter-spacing: 0.16em;
+          margin-top: 3px; }
+    .nav { padding: 12px 0 14px; border-bottom: 1px solid var(--rule); }
+    .nv { display: block; padding: 8px 32px 8px 29px; font-size: 15px; line-height: 21px;
+          color: var(--body); border-left: 3px solid transparent; }
+    .nv:hover { color: var(--ink); background: var(--paper); }
+    .nv.on { color: var(--ink); border-left-color: var(--acc); font-weight: 500; }
+    .rc { padding: 22px 32px 24px; border-bottom: 1px solid var(--rule); }
+    .lab { font-size: 12px; line-height: 16px; color: var(--mute); margin-bottom: 6px; }
+    .val { font-size: 14px; line-height: 21px; color: var(--ink); }
+    .val a { border-bottom: 1px solid var(--hair); }
+    .val a:hover { color: var(--accd); border-color: var(--accd); }
+    .rfoot { margin-top: auto; padding: 22px 32px 26px; border-top: 1px solid var(--rule); }
+    .rfoot a { display: block; font-size: 14px; line-height: 21px;
+               border-bottom: 1px solid var(--hair); width: fit-content; }
+    .rfoot a:hover { color: var(--accd); border-color: var(--accd); }
+    .fl { display: flex; gap: 16px; margin: 8px 0 14px; }
+    .fl a { display: inline; font-size: 13px; line-height: 18px; color: var(--accd); }
+    .fl a:hover { color: var(--ink); border-color: var(--ink); }
+    .upd { margin-top: 12px; font-size: 12px; line-height: 17px; color: var(--mute); }
+
+    /* ---- page head ------------------------------------------------------------ */
+    .head { padding: 52px 48px 44px; border-bottom: 1px solid var(--rule); }
+    h1 { font-size: 64px; font-weight: 200; letter-spacing: -0.03em; line-height: 1.04;
+         margin: 0 0 20px; }
+    .lede { max-width: 720px; font-size: 22px; line-height: 34px; font-weight: 200;
+            color: var(--body); }
+    .lede i { color: var(--ink); }
+    .sec { padding: 48px 48px 52px; border-bottom: 1px solid var(--rule); }
+    h2 { font-size: 15px; font-weight: 500; letter-spacing: 0.01em; color: var(--mute);
+         margin: 0 0 20px; }
+    .more { font-size: 15px; line-height: 22px; border-bottom: 1px solid var(--hair); }
+    .more:hover { color: var(--accd); border-color: var(--accd); }
+
+
+    /* ---- hero: the name, one sentence under it, the portrait as its own edge ---- */
+    .hero { display: grid; grid-template-columns: minmax(0,1fr) 280px; align-items: start;
+            border-bottom: 1px solid var(--rule); }
+    .hl { padding: 52px 48px 44px; }
+    .hr img { display: block; width: 280px; height: 280px; object-fit: cover; }
+    .name { font-size: 92px; font-weight: 200; letter-spacing: -0.035em; line-height: 1.0;
+            margin: 0 0 22px; }
+    .sub { margin: 0; max-width: 520px; font-size: 20px; line-height: 30px; font-weight: 300;
+           color: var(--body); letter-spacing: -0.005em; }
+
+    /* ---- the one sentence ------------------------------------------------------ */
+    .say { padding: 54px 48px 58px; border-bottom: 1px solid var(--rule); }
+    .say p { margin: 0; max-width: 880px; font-size: 34px; line-height: 48px;
+             font-weight: 200; letter-spacing: -0.015em; color: var(--ink); }
+    .say b { font-weight: 300; color: var(--acc); }
+
+    /* ---- figure: the panel titles are set in the page's own face, not in the SVG - */
+    .fig { padding: 44px 48px 40px; border-bottom: 1px solid var(--rule); }
+    .fig img { display: block; width: 100%; max-width: 1024px; }
+    /* 47.5% + 5% + 47.5%: the column centres land on the two arrowheads in the drawing */
+    .figlab { display: grid; grid-template-columns: 1fr 1fr; gap: 5%; max-width: 1024px;
+              padding: 0 0 8px; }
+    .figlab.b { padding: 8px 0 0; }
+    .figlab span { text-align: center; font-size: 13px; line-height: 18px; font-weight: 500;
+                   color: var(--ink); }
+    .cap { max-width: 1024px; margin-top: 18px; font-size: 13px; line-height: 20px;
+           color: var(--mute); }
+    .cap b { font-weight: 500; color: var(--ink); }
+
+    /* ---- recent: the list idiom every other list on the site copies ------------- */
+    .nw { display: grid; grid-template-columns: 116px minmax(0,1fr); padding: 14px 0;
+          border-bottom: 1px solid var(--rule2); align-items: baseline; max-width: 1024px; }
+    .nw:first-of-type { border-top: 1px solid var(--rule); }
+    .nd { font-size: 13px; color: var(--mute); font-variant-numeric: tabular-nums; }
+    .nt { font-size: 17px; line-height: 25px; color: var(--ink); font-weight: 300; }
+
+    /* ---- section rows: these navigate, so they keep their arrows ---------------- */
+    .rows { padding: 48px 48px 0; }
+    .row { display: grid; grid-template-columns: 232px minmax(0,1fr) 48px; align-items: baseline;
+           padding: 26px 0 28px; border-bottom: 1px solid var(--rule); max-width: 1024px; }
+    .row:last-child { border-bottom: none; }
+    .rttl { font-size: 26px; font-weight: 300; letter-spacing: -0.015em; }
+    .rdsc { font-size: 15px; line-height: 23px; color: var(--body); max-width: 560px; }
+    .rmeta { font-size: 13px; line-height: 18px; color: var(--mute); margin-top: 5px; }
+    .arw { justify-self: end; color: var(--ink);
+           transition: transform .15s ease, color .15s ease; }
+    .row:hover .rttl { color: var(--acc); }
+    .row:hover .arw { color: var(--acc); transform: translateX(4px); }
+  
+    .nv .sm { display: none; }
+    @media (max-width: 900px) {
+      .pg { display: flex; flex-direction: column; min-height: 100vh; }
+      .rail { display: contents; }
+      .brand { order: 0; display: flex; align-items: baseline; gap: 12px; padding: 16px 20px 14px;
+               background: var(--surf); }
+      .bn { font-size: 16px; } .bc { margin: 0; font-size: 12px; }
+      .nav { order: 1; display: flex; overflow-x: auto; padding: 0; background: var(--surf);
+             scrollbar-width: none; }
+      .nav::-webkit-scrollbar { display: none; }
+      .nv { flex: none; padding: 12px 5px; font-size: 13px; line-height: 20px;
+            border-left: none; border-bottom: 2px solid transparent; }
+      .nv .lg { display: none; } .nv .sm { display: inline; }
+      .nv:first-child { padding-left: 20px; } .nv:last-child { padding-right: 20px; }
+      .nv.on { border-bottom-color: var(--acc); } .nv:hover { background: none; }
+      main { order: 2; }
+      .rc { order: 3; padding: 18px 20px 20px; background: var(--surf); }
+      .rfoot { order: 4; margin: 0; padding: 22px 20px 30px; background: var(--surf); }
+      .head { padding: 26px 20px 24px; }
+      h1 { font-size: 40px; margin-bottom: 14px; }
+      .lede { font-size: 17px; line-height: 27px; font-weight: 300; }
+      .sec { padding: 26px 20px 30px; }
+      .foot { padding: 24px 20px 36px; }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hl { padding: 26px 20px 20px; }
+      .name { font-size: 44px; margin-bottom: 16px; }
+      .sub { font-size: 16px; line-height: 24px; }
+      .hr { padding: 0 20px 24px; } .hr img { width: 120px; height: 120px; }
+      .say { padding: 24px 20px 28px; } .say p { font-size: 22px; line-height: 32px; }
+      .fig { padding: 20px 20px 24px; }
+      .figlab span { font-size: 11px; line-height: 15px; }
+      .cap { font-size: 12.5px; line-height: 19px; }
+      .nw { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
+      .nt { font-size: 16px; line-height: 24px; }
+      .rows { padding: 20px 20px 0; }
+      .row { grid-template-columns: minmax(0,1fr) 24px; gap: 6px 12px; padding: 17px 0; }
+      .row > div:first-child { grid-column: 1; grid-row: 1; }
+      .arw { grid-column: 2; grid-row: 1; align-self: center; }
+      .rdsc { grid-column: 1; grid-row: 2; font-size: 14px; line-height: 21px; }
+      .rttl { font-size: 20px; }
+    }  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="profile-section">
-                <h1>Tianyuan Liu</h1>
-                <div class="subtitle">Computational Genomics Researcher</div>
-                <div class="affiliation">Institute for Integrative Systems Biology, Spanish National Research Council</div>
-                <div class="contact-info-header">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:tianyuan.liu@csic.es">tianyuan.liu@csic.es</a>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Valencia, Spain</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<div class="pg" style="--acc: #A8562F; --accd: #96512e">
 
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
+  <aside class="rail">
+    <div class="brand">
+      <div class="bn">Tianyuan Liu</div>
+      <div class="bc">刘天元</div>
+    </div>
+    <nav class="nav">
+      <a class="nv on" href="index.html" aria-current="page">Home</a>
+      <a class="nv" href="research.html">Research</a>
+      <a class="nv" href="publications.html">Publications</a>
+      <a class="nv" href="software.html">Software</a>
+      <a class="nv" href="talks.html"><span class="lg">Talks &amp; teaching</span><span class="sm">Talks</span></a>
+      <a class="nv" href="elsewhere.html">Elsewhere</a>
     </nav>
+    <div class="rc">
+      <div class="lab">Role</div>
+      <div class="val">Marie Skłodowska-Curie doctoral fellow</div>
+    </div>
+    <div class="rc">
+      <div class="lab">Based in</div>
+      <div class="val">I2SysBio, CSIC – Universitat de València</div>
+    </div>
+    <div class="rfoot">
+      <a href="mailto:tianyuan.liu@csic.es">tianyuan.liu@csic.es</a>
+      <div class="fl"><a href="https://scholar.google.com/citations?user=RGKxI9oAAAAJ" target="_blank" rel="noopener">Scholar</a><a href="https://orcid.org/0000-0002-8561-6239" target="_blank" rel="noopener">ORCID</a><a href="https://github.com/TianYuan-Liu" target="_blank" rel="noopener">GitHub</a></div>
+      <a href="tianyuan_liu_cv.pdf">Curriculum vitae (PDF)</a>
+      <div class="upd">Updated September 2026</div>
+    </div>
+  </aside>
 
-    <main class="container">
-        <section id="about">
-            <h2>About</h2>
-            <div class="about-content">
-                <p>I am a computational genomics researcher specializing in long-read sequencing technologies and transcriptome analysis. Currently pursuing my PhD at the Institute for Integrative Systems Biology, Spanish National Research Council (CSIC-UV) in Valencia, Spain, under the supervision of Dr. Ana Conesa.</p>
-                
-                <p>My research focuses on developing computational methods for analyzing long-read RNA sequencing data, with particular expertise in isoform regulatory biology and multiomics integration. I am passionate about advancing our understanding of transcriptome complexity through innovative computational approaches.</p>
-                
-                <p>As part of the LongTREC (Long-read Transcriptomics Research and Education Consortium) Marie Skłodowska-Curie Actions program, I work on cutting-edge research that bridges computational biology and experimental genomics.</p>
-            </div>
-            
-            <div class="research-interests">
-                <div class="interest-card">
-                    <i class="fas fa-dna fa-2x"></i>
-                    <h3>Long-Read Sequencing</h3>
-                    <p>Third-generation sequencing technologies and their applications in transcriptomics</p>
-                </div>
-                <div class="interest-card">
-                    <i class="fas fa-project-diagram fa-2x"></i>
-                    <h3>Multiomics Integration</h3>
-                    <p>Integrating diverse omics data to understand biological systems</p>
-                </div>
-                <div class="interest-card">
-                    <i class="fas fa-code fa-2x"></i>
-                    <h3>Tool Development</h3>
-                    <p>Creating computational tools for genomics research</p>
-                </div>
-            </div>
-        </section>
+  <main>
+    <section class="hero">
+      <div class="hl">
+        <h1 class="name">Tianyuan Liu</h1>
+        <p class="sub">PhD candidate in bioinformatics. Long reads, single-molecule
+          epigenomics, AI for interpretation.</p>
+      </div>
+      <div class="hr"><img src="portrait.jpg" alt="Tianyuan Liu"></div>
+    </section>
 
-        <section id="research">
-            <h2>Research Focus</h2>
-            <p>My research centers on <strong>"Long reads multiomics methods to understand isoform regulatory biology"</strong>, where I develop and apply computational methods to analyze transcriptome complexity using third-generation sequencing technologies.</p>
-            
-            <h3>Key Research Areas</h3>
-            <ul style="margin-top: 20px; line-height: 2;">
-                <li><strong>Quality Control Methods:</strong> Developing tools like SQANTI3 for comprehensive quality assessment of long-read transcriptomes</li>
-                <li><strong>Isoform Detection:</strong> Creating algorithms for accurate identification and quantification of transcript isoforms</li>
-                <li><strong>Epigenome Profiling:</strong> Utilizing long-read sequencing for studying DNA methylation and chromatin modifications</li>
-                <li><strong>Transcriptome Assembly:</strong> Improving methods for de novo transcriptome reconstruction from long reads</li>
-                <li><strong>Differential Analysis:</strong> Investigating condition-specific changes in isoform usage and expression</li>
-            </ul>
-        </section>
+    <section class="say">
+      <p>Sequencing is easy now. Deciding which results are real — and what they mean — is not.
+        I build the <b>controls</b> for the first half and the <b>AI</b> for the second.</p>
+    </section>
 
-        <section id="publications">
-            <h2>Selected Publications</h2>
-            
-            <div class="publication">
-                <h3><a href="https://www.nature.com/articles/s41592-024-02229-2" target="_blank">SQANTI3: curation of long-read transcriptomes for accurate identification of known and novel isoforms</a></h3>
-                <p class="authors">FJ Pardo-Palacios, A Arzalluz-Luque, L Kondratova, P Salguero, J Mestre-Tomás, R Amorín, E Estevan-Morió, T Liu, et al.</p>
-                <p class="journal">Nature Methods 21 (5), 793-797, 2024</p>
-                <div class="citation">Major tool for quality control and curation of long-read transcriptomes.</div>
-            </div>
+    <section class="fig">
+      <div class="figlab"><span>Direct DNA methylation detection</span><span>Mapping protein–DNA interaction</span></div>
+      <img src="epigenome.svg" alt="Single-molecule long-read strategies for profiling the epigenome">
+      <div class="figlab b"><span>3D chromosome interaction</span><span>Chromatin accessibility profiling</span></div>
+      <div class="cap"><b>One native molecule, four assays at once.</b> Liu &amp; Conesa,
+        <i>Profiling the epigenome using long-read sequencing</i>, Nature Genetics 57, 27–41 (2025).</div>
+    </section>
 
-            <div class="publication">
-                <h3><a href="https://www.nature.com/articles/s41592-024-02298-3" target="_blank">Systematic assessment of long-read RNA-seq methods for transcript identification and quantification</a></h3>
-                <p class="authors">FJ Pardo-Palacios, D Wang, F Reese, M Diekhans, S Carbonell-Sala, ..., T Liu, ..., A Conesa</p>
-                <p class="journal">Nature Methods 21 (7), 1349-1363, 2024</p>
-                <div class="citation">Comprehensive benchmarking study of long-read RNA sequencing methods.</div>
-            </div>
-
-            <div class="publication">
-                <h3><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-023-03127-0" target="_blank">SQANTI-SIM: a simulator of controlled transcript novelty for lrRNA-seq benchmark</a></h3>
-                <p class="authors">J Mestre-Tomás, T Liu, F Pardo-Palacios, A Conesa</p>
-                <p class="journal">Genome Biology 24 (1), 286, 2023</p>
-                <div class="citation">Simulation tool for benchmarking long-read RNA sequencing methods.</div>
-            </div>
-
-            <div class="publication">
-                <h3><a href="https://academic.oup.com/nar/article/50/W1/W551/6591534" target="_blank">PaintOmics 4: new tools for the integrative analysis of multi-omics datasets supported by multiple pathway databases</a></h3>
-                <p class="authors"><span class="first-author">T Liu</span>, P Salguero, M Petek, C Martinez-Mira, L Balzano-Nogueira, A Conesa, et al.</p>
-                <p class="journal">Nucleic Acids Research 50 (W1), W551-W559, 2022</p>
-                <div class="citation">Web-based platform for multi-omics data integration and pathway analysis.</div>
-            </div>
-
-            <div class="publication">
-                <h3><a href="https://www.mdpi.com/2073-4425/11/12/1447" target="_blank">Transcriptional differences for COVID-19 disease map genes between males and females indicate a different basal immunophenotype relevant to the disease</a></h3>
-                <p class="authors"><span class="first-author">T Liu</span>, L Balzano-Nogueira, A Lleo, A Conesa</p>
-                <p class="journal">Genes 11 (12), 1447, 2020</p>
-                <div class="citation">Analysis of sex-specific differences in COVID-19 related gene expression.</div>
-            </div>
-
-            <div class="publication">
-                <h3><a href="https://academic.oup.com/bioinformatics/article/36/Supplement_2/i618/6055935" target="_blank">MirCure: a tool for quality control, filter and curation of microRNAs of animals and plants</a></h3>
-                <p class="authors">G Ylla, T Liu, A Conesa</p>
-                <p class="journal">Bioinformatics 36 (Supplement_2), i618-i624, 2020</p>
-                <div class="citation">Quality control tool for microRNA analysis.</div>
-            </div>
-
-            <div class="publication">
-                <h3><a href="https://pubmed.ncbi.nlm.nih.gov/39779955/" target="_blank">Profiling the epigenome using long-read sequencing</a></h3>
-                <p class="authors"><span class="first-author">T Liu</span>, A Conesa</p>
-                <p class="journal">Nature Genetics 57 (1), 27-41, 2025</p>
-                <div class="citation">A comprehensive review of long-read sequencing methods for epigenome analysis.</div>
-            </div>
-            
-            <div class="publication">
-                <h3><a href="https://www.nature.com/articles/s41576-025-00828-z" target="_blank">Transcriptomics in the era of long-read sequencing</a></h3>
-                <p class="authors">Carolina Monzó, <span class="first-author">T Liu</span> & A Conesa</p>
-                <p class="journal">Nature Reviews Genetics, 2025</p>
-                <div class="citation">A comprehensive overview of transcriptomics applications using long-read sequencing technologies.</div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            
-            <div class="project-section">
-                <h3>Major Projects</h3>
-                
-                <div class="project-card">
-                    <h4><i class="fab fa-github"></i> PaintOmics 4</h4>
-                    <p>An advanced web-based platform for integrative analysis of multi-omics datasets with support for multiple pathway databases. Enables comprehensive visualization and analysis of complex biological data.</p>
-                    <p><strong>Technologies:</strong> JavaScript, Web-based interface, Multi-omics integration</p>
-                    <a href="https://github.com/ConesaLab/paintomics4" class="btn" target="_blank">View on GitHub</a>
-                </div>
-
-                <div class="project-card">
-                    <h4><i class="fab fa-github"></i> MirCure</h4>
-                    <p>A specialized tool for microRNA quality control, filtering, and curation in both animals and plants. Provides comprehensive analysis capabilities for miRNA research.</p>
-                    <p><strong>Language:</strong> R, Bioinformatics pipeline</p>
-                    <a href="https://github.com/ConesaLab/MirCure" class="btn" target="_blank">View on GitHub</a>
-                </div>
-
-                <div class="project-card">
-                    <h4><i class="fab fa-github"></i> DeCovid</h4>
-                    <p>A tool for conducting wide-spread transcriptional analysis for COVID-19 Disease Map genes. Provides information on gene expression differences between demographic groups using GTEx project data.</p>
-                    <p><strong>Features:</strong> Differential expression analysis, GO enrichment, Interactive web interface</p>
-                    <a href="https://github.com/ConesaLab/DeCovid" class="btn" target="_blank">View on GitHub</a>
-                </div>
-            </div>
-
-            <div class="project-section">
-                <h3>Participating Projects</h3>
-                
-                <div class="project-card">
-                    <h4><i class="fab fa-github"></i> SQANTI3</h4>
-                    <p>A comprehensive quality control and curation pipeline for long-read transcriptomes. SQANTI3 enables accurate identification of known and novel isoforms through extensive annotation and filtering capabilities.</p>
-                    <p><strong>Contribution:</strong> Report generation and documentation</p>
-                    <a href="https://github.com/ConesaLab/SQANTI3" class="btn" target="_blank">View on GitHub</a>
-                </div>
-
-                <div class="project-card">
-                    <h4><i class="fab fa-github"></i> SQANTI-SIM</h4>
-                    <p>A simulator of controlled transcript novelty for long-read RNA-seq benchmarking. Essential tool for evaluating and comparing different long-read analysis methods.</p>
-                    <p><strong>Contribution:</strong> Added PBSIM integration to the simulation framework</p>
-                    <a href="https://github.com/ConesaLab/SQANTI-SIM" class="btn" target="_blank">View on GitHub</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <h2>Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2023 - Present</div>
-                    <h3>PhD Student & Early Stage Researcher</h3>
-                    <p class="institution">Institute for Integrative Systems Biology, Spanish National Research Council (CSIC-UV), Valencia, Spain</p>
-                    <p>Conducting research on long-read multiomics methods under the LongTREC Marie Skłodowska-Curie Actions program. Supervised by Dr. Ana Conesa.</p>
-                    <ul style="margin-top: 10px;">
-                        <li>Developing computational methods for isoform regulatory biology</li>
-                        <li>Contributing to major software projects like SQANTI3</li>
-                        <li>Collaborating with international research networks</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2019-2020</div>
-                    <h3>Research Experience</h3>
-                    <p class="institution">University of Florida, Genetics Institute</p>
-                    <p>Working with Dr. Ana Conesa and Dr. Guillem Ylla in MirCure project, focusing on microRNA quality control and curation methods.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">2016-2020</div>
-                    <h3>Bachelor of Engineering in Bioengineering</h3>
-                    <p class="institution">Huazhong Agricultural University (HZAU)</p>
-                    <p>Comprehensive education in bioengineering with focus on computational biology and bioinformatics applications.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <div class="skills">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">HTML/CSS</span>
-                        <span class="skill-tag">Bash/Shell</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PacBio</span>
-                        <span class="skill-tag">Oxford Nanopore</span>
-                        <span class="skill-tag">Bioconductor</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">Nextflow</span>
-                        <span class="skill-tag">Conda/Mamba</span>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-chart-bar"></i> Data Analysis</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Statistical Analysis</span>
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Data Visualization</span>
-                        <span class="skill-tag">Pipeline Development</span>
-                        <span class="skill-tag">Reproducible Research</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-grid">
-                <div>
-                    <h3>Contact Information</h3>
-                    <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:tianyuan.liu@csic.es">tianyuan.liu@csic.es</a></p>
-                        <p><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Valencia, Spain</p>
-                        <p><i class="fas fa-university"></i> <strong>Institution:</strong> Spanish National Research Council (CSIC)</p>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3>Online Presence</h3>
-                    <div class="contact-info">
-                        <p><a href="https://github.com/TianYuan-Liu" target="_blank"><i class="fab fa-github"></i> GitHub Profile</a></p>
-                        <p><a href="https://scholar.google.com/citations?hl=en&user=RGKxI9oAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a></p>
-                        <p><a href="https://x.com/Tian_Yuan_Liu" target="_blank"><i class="fab fa-x"></i> X (Twitter)</a></p>
-                        <p><a href="https://bsky.app/profile/tianyuanliu.bsky.social" target="_blank"><i class="fas fa-cloud"></i> Bluesky</a></p>
-                        <p><a href="https://www.youtube.com/@tianyuanliu8239" target="_blank"><i class="fab fa-youtube"></i> YouTube Channel</a></p>
-                        <p><a href="https://longtrec.eu/individual-research-projects/project-11/" target="_blank"><i class="fas fa-link"></i> LongTREC Project</a></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Tianyuan Liu. All rights reserved.</p>
-            <p>Computational Genomics Research • Long-Read Sequencing • Open Science</p>
-            <div class="social-links">
-                <a href="https://github.com/TianYuan-Liu" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://scholar.google.com/citations?hl=en&user=RGKxI9oAAAAJ" target="_blank"><i class="fas fa-graduation-cap"></i></a>
-                <a href="https://x.com/Tian_Yuan_Liu" target="_blank"><i class="fab fa-x"></i></a>
-                <a href="https://bsky.app/profile/tianyuanliu.bsky.social" target="_blank"><i class="fas fa-cloud"></i></a>
-                <a href="https://www.youtube.com/@tianyuanliu8239" target="_blank"><i class="fab fa-youtube"></i></a>
-            </div>
+    <section class="sec">
+      <h2>Recent</h2>
+      
+        <div class="nw">
+          <div class="nd">July 2026</div>
+          <div class="nt">PaintOmics AI released.</div>
         </div>
-    </footer>
+      
+        <div class="nw">
+          <div class="nd">July 2026</div>
+          <div class="nt">SQANTI-epi presented in the HiTSeq track at ISMB 2026, Washington DC.</div>
+        </div>
+      
+        <div class="nw">
+          <div class="nd">July 2026</div>
+          <div class="nt">Cardiff work out in BMC Genomics: tissue identity and cross-species transfer of a developmental programme.</div>
+        </div>
+      
+        <div class="nw">
+          <div class="nd">June 2026</div>
+          <div class="nt">Taught at the VALT Summer Course in Long-read Bioinformatics, València.</div>
+        </div>
+      
+        <div class="nw">
+          <div class="nd">April 2026</div>
+          <div class="nt">TUSCO published in Nature Communications.</div>
+        </div>
+      
+    </section>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <section class="rows">
+      
+        <a class="row" href="research.html">
+          <div>
+            <div class="rttl">Research</div>
+            <div class="rmeta">Three threads</div>
+          </div>
+          <div class="rdsc">Measurement you can trust, chromatin from single molecules, AI that shows its evidence.</div>
+          <svg class="arw" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </a>
+      
+        <a class="row" href="publications.html">
+          <div>
+            <div class="rttl">Publications</div>
+            <div class="rmeta">Ten papers · five as first author</div>
+          </div>
+          <div class="rdsc">Nature Communications, Nature Genetics, Nature Reviews Genetics, Nucleic Acids Research.</div>
+          <svg class="arw" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </a>
+      
+        <a class="row" href="software.html">
+          <div>
+            <div class="rttl">Software</div>
+            <div class="rmeta">Six research tools</div>
+          </div>
+          <div class="rdsc">SQANTI-epi, TUSCO, TELLME, PaintOmics AI, SQANTI3, MirCure.</div>
+          <svg class="arw" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </a>
+      
+        <a class="row" href="talks.html">
+          <div>
+            <div class="rttl">Talks &amp; teaching</div>
+            <div class="rmeta">Conferences, courses, students</div>
+          </div>
+          <div class="rdsc">ISMB, ECCB and LRUA; two summer courses; the longTREC doctoral network.</div>
+          <svg class="arw" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </a>
+      
+        <a class="row" href="elsewhere.html">
+          <div>
+            <div class="rttl">Elsewhere</div>
+            <div class="rmeta">Wuhan · Gainesville · Cardiff · València · Milan</div>
+          </div>
+          <div class="rdsc">Five cities, three languages, and the road.</div>
+          <svg class="arw" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.25"/>
+          </svg>
+        </a>
+      
+    </section>
+  </main>
 
-        // Add active navigation highlighting
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
+</div>
 
-            document.querySelectorAll('nav a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Add fade-in animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
 </body>
-</html> 
+</html>

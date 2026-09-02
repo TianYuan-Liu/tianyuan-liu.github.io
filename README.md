@@ -1,57 +1,40 @@
-# Tianyuan Liu - Personal Website
+# tianyuan-liu.github.io
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Ftianyuan-liu.github.io)](https://tianyuan-liu.github.io)
+Personal academic site of Tianyuan Liu — live at <https://tianyuan-liu.github.io/>.
 
-Personal portfolio website for Tianyuan Liu, a Computational Genomics Researcher at the Spanish National Research Council (CSIC-UV), specializing in long-read sequencing technologies and transcriptome analysis.
+Six static pages (Home, Research, Publications, Software, Talks & teaching, Elsewhere),
+one palette (pine, bone, copper), IBM Plex Sans, no framework, no build step on GitHub's side.
 
-🌐 **Live Site:** [tianyuan-liu.github.io](https://tianyuan-liu.github.io)
+## How it is built
 
-## Overview
+The HTML here is **generated** — do not edit it by hand.
 
-This responsive portfolio website showcases:
-- Research focus on long-read multiomics and isoform regulatory biology
-- Selected publications and contributions to major genomics tools
-- Open-source projects including SQANTI3, PaintOmics 4, and MirCure
-- Professional experience and technical expertise
+The source of truth is the design canvas in `~/Desktop/website_design/`:
 
-## Features
+- `build_site.py` writes the six desktop artboards (`*.dc.html`) from one shared block —
+  all content (papers, talks, places, news) lives there.
+- `build_static.mjs` turns those artboards into this site: it evaluates each page's data,
+  renders the templates, replaces placeholder links with real targets (DOIs, GitHub,
+  Scholar, ORCID), adds the mobile layout, favicons and metadata, copies the images,
+  and writes `references.bib`.
 
-- **Responsive Design** - Optimized for desktop, tablet, and mobile
-- **Smooth Navigation** - Sticky navigation with animated scrolling
-- **Interactive Elements** - Fade-in animations and hover effects
-- **Modern UI** - Clean design with professional typography and color scheme
-- **Contact Integration** - Direct links to academic profiles and social media
+To publish a change:
 
-## Tech Stack
-
-- HTML5 & CSS3
-- Vanilla JavaScript
-- Font Awesome icons
-- Google Fonts (Crimson Text & Source Sans Pro)
-
-## Local Development
-
-```bash
-git clone https://github.com/TianYuan-Liu/tianyuan-liu.github.io.git
-cd tianyuan-liu.github.io
-open index.html  # Opens in default browser
+```sh
+cd ~/Desktop/website_design
+python3 build_site.py                                  # if the content changed
+node build_static.mjs --out ../tianyuan-liu.github.io
+cd ../tianyuan-liu.github.io && git add -A && git commit -m "…" && git push
 ```
 
-## Project Structure
+GitHub Pages serves the `main` branch root; `.nojekyll` keeps Jekyll out of the way.
 
-```
-├── index.html          # Main HTML file
-├── script.js           # JavaScript for interactivity
-└── README.md          # Project documentation
-```
+## Files
 
-## Links
-
-- 🌐 [Live Website](https://tianyuan-liu.github.io)
-- 👤 [GitHub Profile](https://github.com/TianYuan-Liu)
-- 🎓 [Google Scholar](https://scholar.google.com/citations?hl=en&user=RGKxI9oAAAAJ)
-- 🔬 [LongTREC Project](https://longtrec.eu/individual-research-projects/project-11/)
-
----
-
-*Built with ❤️ for open science and computational genomics research* 
+| file | what |
+|---|---|
+| `index.html`, `research.html`, `publications.html`, `software.html`, `talks.html`, `elsewhere.html` | the pages |
+| `favicon/` | icon set (SVG, ICO, PNG sizes, web manifest) |
+| `references.bib` | the publication list as BibTeX, generated from the same data |
+| `tianyuan_liu_cv.pdf` | curriculum vitae |
+| `*.jpg`, `*.svg`, `*.png` | portrait, figure, photographs, project marks |

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elsewhere — Tianyuan Liu</title>
+  <meta name="description" content="Tianyuan Liu — PhD candidate in bioinformatics at I2SysBio (CSIC – Universitat de València). Long-read sequencing, single-molecule epigenomics, and AI for interpretation.">
+  <meta name="author" content="Tianyuan Liu">
+  <link rel="canonical" href="https://tianyuan-liu.github.io/elsewhere.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Elsewhere — Tianyuan Liu">
+  <meta property="og:description" content="Tianyuan Liu — PhD candidate in bioinformatics at I2SysBio (CSIC – Universitat de València). Long-read sequencing, single-molecule epigenomics, and AI for interpretation.">
+  <meta property="og:image" content="https://tianyuan-liu.github.io/portrait.jpg">
+  <meta property="og:url" content="https://tianyuan-liu.github.io/elsewhere.html">
+  <link rel="icon" href="/favicon/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+  <meta name="theme-color" content="#16302A">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap">
+  <style>
+    :root {
+      /* pine, bone and copper. The figure, the mark and the page all use these
+         three and nothing else. Three greys, not five: ink for titles, body for
+         reading text, mute for labels, dates and captions. */
+      --paper:#FBFAF7; --surf:#EFEDE4;
+      --rule:#DFDBCF;  --rule2:#EAE7DC;
+      --ink:#16302A;   --body:#3C4A44; --mute:#59645F;
+      --hair:#CFC9B8;
+    }
+    body { margin: 0; background: var(--paper); }
+    .pg { font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+          background: var(--paper); color: var(--ink); display: grid;
+          grid-template-columns: 320px minmax(0, 1fr); min-height: 100vh;
+          -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, .lede, .one, .say p, .sub, .rttl { text-wrap: balance; }
+    .rdsc, .ctxt, .dsc, .val, .nt, .tt, .pdt, .cap { text-wrap: pretty; }
+
+    /* ---- left rail: brand, navigation, facts about this page, contact ------ */
+    .rail { position: sticky; top: 0; height: 100vh; align-self: start; overflow: auto;
+            border-right: 1px solid var(--rule); background: var(--surf);
+            display: flex; flex-direction: column; }
+    .brand { padding: 26px 32px 24px; border-bottom: 1px solid var(--rule); }
+    .bn { font-size: 17px; font-weight: 500; letter-spacing: -0.005em; }
+    .bc { font-size: 13px; font-weight: 300; color: var(--mute); letter-spacing: 0.16em;
+          margin-top: 3px; }
+    .nav { padding: 12px 0 14px; border-bottom: 1px solid var(--rule); }
+    .nv { display: block; padding: 8px 32px 8px 29px; font-size: 15px; line-height: 21px;
+          color: var(--body); border-left: 3px solid transparent; }
+    .nv:hover { color: var(--ink); background: var(--paper); }
+    .nv.on { color: var(--ink); border-left-color: var(--acc); font-weight: 500; }
+    .rc { padding: 22px 32px 24px; border-bottom: 1px solid var(--rule); }
+    .lab { font-size: 12px; line-height: 16px; color: var(--mute); margin-bottom: 6px; }
+    .val { font-size: 14px; line-height: 21px; color: var(--ink); }
+    .val a { border-bottom: 1px solid var(--hair); }
+    .val a:hover { color: var(--accd); border-color: var(--accd); }
+    .rfoot { margin-top: auto; padding: 22px 32px 26px; border-top: 1px solid var(--rule); }
+    .rfoot a { display: block; font-size: 14px; line-height: 21px;
+               border-bottom: 1px solid var(--hair); width: fit-content; }
+    .rfoot a:hover { color: var(--accd); border-color: var(--accd); }
+    .fl { display: flex; gap: 16px; margin: 8px 0 14px; }
+    .fl a { display: inline; font-size: 13px; line-height: 18px; color: var(--accd); }
+    .fl a:hover { color: var(--ink); border-color: var(--ink); }
+    .upd { margin-top: 12px; font-size: 12px; line-height: 17px; color: var(--mute); }
+
+    /* ---- page head ------------------------------------------------------------ */
+    .head { padding: 52px 48px 44px; border-bottom: 1px solid var(--rule); }
+    h1 { font-size: 64px; font-weight: 200; letter-spacing: -0.03em; line-height: 1.04;
+         margin: 0 0 20px; }
+    .lede { max-width: 720px; font-size: 22px; line-height: 34px; font-weight: 200;
+            color: var(--body); }
+    .lede i { color: var(--ink); }
+    .sec { padding: 48px 48px 52px; border-bottom: 1px solid var(--rule); }
+    h2 { font-size: 15px; font-weight: 500; letter-spacing: 0.01em; color: var(--mute);
+         margin: 0 0 20px; }
+    .more { font-size: 15px; line-height: 22px; border-bottom: 1px solid var(--hair); }
+    .more:hover { color: var(--accd); border-color: var(--accd); }
+
+
+    /* places: the same typographic list as everywhere else */
+    .p { display: grid; grid-template-columns: 116px 1fr; padding: 15px 0;
+         border-bottom: 1px solid var(--rule2); align-items: baseline; max-width: 1024px; }
+    .p:first-of-type { border-top: 1px solid var(--rule); }
+    .pyr { font-size: 13px; color: var(--mute); font-variant-numeric: tabular-nums; }
+    .ppl { font-size: 18px; font-weight: 400; line-height: 26px; }
+    .pdt { font-size: 14px; line-height: 21px; color: var(--body); margin-top: 2px; }
+
+    .one { margin: 0; max-width: 800px; }   /* 800 = source width, no upscaling */
+    .one img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 60%; }
+    .cap { margin-top: 12px; font-size: 13px; line-height: 20px; color: var(--mute); }
+  
+    .nv .sm { display: none; }
+    @media (max-width: 900px) {
+      .pg { display: flex; flex-direction: column; min-height: 100vh; }
+      .rail { display: contents; }
+      .brand { order: 0; display: flex; align-items: baseline; gap: 12px; padding: 16px 20px 14px;
+               background: var(--surf); }
+      .bn { font-size: 16px; } .bc { margin: 0; font-size: 12px; }
+      .nav { order: 1; display: flex; overflow-x: auto; padding: 0; background: var(--surf);
+             scrollbar-width: none; }
+      .nav::-webkit-scrollbar { display: none; }
+      .nv { flex: none; padding: 12px 5px; font-size: 13px; line-height: 20px;
+            border-left: none; border-bottom: 2px solid transparent; }
+      .nv .lg { display: none; } .nv .sm { display: inline; }
+      .nv:first-child { padding-left: 20px; } .nv:last-child { padding-right: 20px; }
+      .nv.on { border-bottom-color: var(--acc); } .nv:hover { background: none; }
+      main { order: 2; }
+      .rc { order: 3; padding: 18px 20px 20px; background: var(--surf); }
+      .rfoot { order: 4; margin: 0; padding: 22px 20px 30px; background: var(--surf); }
+      .head { padding: 26px 20px 24px; }
+      h1 { font-size: 40px; margin-bottom: 14px; }
+      .lede { font-size: 17px; line-height: 27px; font-weight: 300; }
+      .sec { padding: 26px 20px 30px; }
+      .foot { padding: 24px 20px 36px; }
+    }
+
+    @media (max-width: 900px) {
+      .p { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
+      .one { max-width: none; }
+    }  </style>
+</head>
+<body>
+<div class="pg" style="--acc: #A8562F; --accd: #96512e">
+
+  <aside class="rail">
+    <div class="brand">
+      <div class="bn">Tianyuan Liu</div>
+      <div class="bc">刘天元</div>
+    </div>
+    <nav class="nav">
+      <a class="nv" href="index.html">Home</a>
+      <a class="nv" href="research.html">Research</a>
+      <a class="nv" href="publications.html">Publications</a>
+      <a class="nv" href="software.html">Software</a>
+      <a class="nv" href="talks.html"><span class="lg">Talks &amp; teaching</span><span class="sm">Talks</span></a>
+      <a class="nv on" href="elsewhere.html" aria-current="page">Elsewhere</a>
+    </nav>
+    <div class="rc">
+      <div class="lab">Working languages</div>
+      <div class="val">English on paper and at conferences, Spanish in the lab in València, Mandarin at home.</div>
+    </div>
+    <div class="rfoot">
+      <a href="mailto:tianyuan.liu@csic.es">tianyuan.liu@csic.es</a>
+      <div class="fl"><a href="https://scholar.google.com/citations?user=RGKxI9oAAAAJ" target="_blank" rel="noopener">Scholar</a><a href="https://orcid.org/0000-0002-8561-6239" target="_blank" rel="noopener">ORCID</a><a href="https://github.com/TianYuan-Liu" target="_blank" rel="noopener">GitHub</a></div>
+      <a href="tianyuan_liu_cv.pdf">Curriculum vitae (PDF)</a>
+      <div class="upd">Updated September 2026</div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="head">
+      <h1>Elsewhere</h1>
+      <div class="lede">Five cities so far, and two things that are not bioinformatics: road
+        running, and a snowboard. Both have the same appeal — the result is not open to
+        interpretation.</div>
+    </section>
+
+    <section class="sec">
+      <h2>Places</h2>
+      
+        <div class="p">
+          <div class="pyr">2023 —</div>
+          <div>
+            <div class="ppl">València, Spain</div>
+            <div class="pdt">PhD in bioinformatics, I2SysBio, CSIC – Universitat de València. With Prof. Ana Conesa.</div>
+          </div>
+        </div>
+      
+        <div class="p">
+          <div class="pyr">2024 – 2025</div>
+          <div>
+            <div class="ppl">Milan, Italy</div>
+            <div class="pdt">Secondment at the IIT Center for Genomic Science, with Dr Francesco Nicassio. December to February, at the bench.</div>
+          </div>
+        </div>
+      
+        <div class="p">
+          <div class="pyr">2021 – 2023</div>
+          <div>
+            <div class="ppl">Cardiff, United Kingdom</div>
+            <div class="pdt">School of Engineering, Cardiff University. MPhil awarded 2026, with Dr Peter Theobald.</div>
+          </div>
+        </div>
+      
+        <div class="p">
+          <div class="pyr">2019 – 2021</div>
+          <div>
+            <div class="ppl">Gainesville, United States</div>
+            <div class="pdt">University of Florida, Conesa lab. On campus 2019–20, then remotely from Beijing until 2021 — PaintOmics 4, and the first long-read work.</div>
+          </div>
+        </div>
+      
+        <div class="p">
+          <div class="pyr">2016 – 2020</div>
+          <div>
+            <div class="ppl">Wuhan, China</div>
+            <div class="pdt">BEng in Bioengineering, Huazhong Agricultural University.</div>
+          </div>
+        </div>
+      
+    </section>
+
+    <section class="sec" style="border-bottom:none">
+      <figure class="one">
+        <img src="running.jpg" alt="Running a road race in Cardiff">
+        <figcaption class="cap">A road race in Cardiff.</figcaption>
+      </figure>
+    </section>
+  </main>
+
+</div>
+
+</body>
+</html>

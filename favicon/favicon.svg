@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Tianyuan Liu">
+<title>Tianyuan Liu</title>
+<!-- One letter and a full stop, set not drawn: the T of IBM Plex Sans Bold, the
+     face the site is typeset in, taken as an outline. The period is drawn,
+     because the one Plex ships lands at 2.5px at 16px - under the ~2.8px where
+     a dot stops being ink - so it would come out as grey fringe, not a period.
+
+     Cap height 40 of 64, down from 44. Cap 40 puts the baseline on a whole
+     device pixel at all three .ico sizes - 13 of 16, 26 of 32, 39 of 48 - so
+     the dot rasterises solid instead of grey. Cap 44 put the baseline on a half
+     pixel; cap 48 is also on-grid but leaves the arm 9.1px wide at 16px, which
+     is odd and cannot centre a stem.
+
+     The dot is a 12-unit square on the baseline, 3px at 16px: 1.38x the stem,
+     where Plex's own period is 1.16x. 19% heavy on purpose. At 16px the stem
+     itself only draws 2px, and any dot under about 2.8px comes out as grey
+     fringe rather than ink - a period that is typographically right and
+     perceptually absent. Every dimension then scales 1:2:3 across 16/32/48,
+     so the three hand-drawn .ico entries are provably the same mark.
+
+     Its left edge sits at 44 units, level with the arm's right end and 11.6
+     units - 2.9px, three clear pine columns at 16px - from the stem. Far
+     enough to read as punctuation, close enough that the pair reads as one
+     word rather than a letter and a tile.
+
+     The letter, not the ink box, is centred: its stem sits 1px left of tile
+     centre and the dot overhangs into the right margin. Dark browser chrome
+     puts the pine tile at 1.14:1 against its own strip - the tile is not there
+     - so on dark it is the letterform, not the tile, that has to look centred.
+
+     Bone #EFEDE4 on pine #16302A: 12.0:1, so it survives a 16px tab in either
+     light or dark chrome. No copper - a period is the same colour as the
+     letter it follows, and that shared ink is half of how it reads as
+     punctuation rather than as a status dot. -->
+<rect width="64" height="64" fill="#16302A"/>
+<path transform="translate(11.2665 52.0000) scale(0.057307 -0.057307)" d="M557 563H368V0H216V563H27V698H557Z" fill="#EFEDE4"/>
+<rect x="44" y="40" width="12" height="12" fill="#EFEDE4"/>
+</svg>
