@@ -81,15 +81,32 @@
     .more:hover { color: var(--accd); border-color: var(--accd); }
 
 
-    .sec.photos { padding: 40px 48px 44px; }
-    .ph { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 1024px; }
-    /* 3:2, not 4:3 — longtrec.jpg is 840x560 and 4:3 cut the far-left colleague */
-    .ph img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
-    /* the group photo spans both columns; 16:9 keeps a wide row from towering */
-    .ph .wide { grid-column: 1 / -1; }
-    .ph .wide img { aspect-ratio: 16 / 9; }
-    .cap { margin-top: 12px; font-size: 13px; line-height: 20px; color: var(--mute); }
-    .cap b { display: block; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+    /* ---- photographs: one stage, a caption row, a strip of thumbnails ------------
+       The stage shows a photo at its own proportions, set on the left of the measure —
+       nothing is cropped to fit. Thumbnails are the controls (and ← →); the counter
+       says there are more. Any number of photos takes the same height. */
+    .sec.photos { padding: 40px 48px 36px; }
+    .viewer { max-width: 1024px; }
+    .stage { height: 520px; cursor: e-resize; }
+    .stage.back { cursor: w-resize; }
+    .stg { display: block; height: 100%; max-width: 100%; object-fit: contain;
+           object-position: left center; transition: opacity .16s ease; }
+    .stg.fade { opacity: 0; }
+    .vc { display: grid; grid-template-columns: 116px minmax(0,1fr) 116px; gap: 24px;
+          align-items: baseline; padding: 14px 0 18px; }
+    .vmk, .vcount { font-size: 13px; color: var(--mute); font-variant-numeric: tabular-nums; }
+    .vcount { text-align: right; }
+    .vt { font-size: 16px; line-height: 24px; }
+    .vn { font-size: 14px; line-height: 21px; color: var(--mute); margin-top: 2px; }
+    .strip { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+    .strip::-webkit-scrollbar { display: none; }
+    .th { flex: none; height: 60px; padding: 0 0 5px; border: 0; background: none; cursor: pointer;
+          opacity: .45; border-bottom: 2px solid transparent; }
+    .th img { display: block; height: 100%; width: auto; }
+    .th:hover { opacity: .8; }
+    .th[aria-current="true"] { opacity: 1; border-bottom-color: var(--acc); }
+    .th:focus-visible { outline: 2px solid var(--accd); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { .stg { transition: none; } }
 
     /* one list idiom: 116px date column, hairlines, baseline-aligned, 1024 measure */
     .t { display: grid; grid-template-columns: 116px minmax(0,1fr) 280px; gap: 24px;
@@ -134,9 +151,15 @@
     }
 
     @media (max-width: 900px) {
+
       .sec.photos { padding: 20px 20px 24px; }
-      .ph { grid-template-columns: 1fr; gap: 20px; }
-      .ph .wide img { aspect-ratio: 3 / 2; }
+      .stage { height: auto; aspect-ratio: 3 / 2; cursor: default; }
+      .stg { width: 100%; object-position: left top; }
+      /* year and counter share the first line; title and note take the second */
+      .vc { grid-template-columns: minmax(0,1fr) auto; gap: 2px 12px; padding: 12px 0 14px; }
+      .vc > div:nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
+      .vcount { grid-column: 2; grid-row: 1; }
+      .th { height: 48px; }
       .t { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
       .tt { font-size: 15px; line-height: 23px; }
     }  </style>
@@ -181,21 +204,21 @@
     </section>
 
     <section class="sec photos">
-      <div class="ph">
-        <div>
-          <img src="longtrec.jpg" alt="The longTREC doctoral network cohort">
-          <div class="cap"><b>longTREC doctoral network</b>
-            Twelve doctoral candidates, one Horizon MSCA doctoral network.</div>
+      <div class="viewer" data-viewer data-i="0">
+        <div class="stage"><img class="stg" src="course.jpg" alt="VALT Summer Course in Long-read Bioinformatics, València"></div>
+        <div class="vc">
+          <div class="vmk">2026</div>
+          <div><div class="vt">VALT Summer Course, València</div><div class="vn">Three days of hands-on long-read analysis at I2SysBio, June 2026.</div></div>
+          <div class="vcount">1 of 3</div>
         </div>
-        <div>
-          <img src="course.jpg" alt="VALT Summer Course in Long-read Bioinformatics, València">
-          <div class="cap"><b>VALT Summer Course, València</b>
-            June 2026 — three days of hands-on long-read analysis at I2SysBio.</div>
-        </div>
-        <div class="wide">
-          <img src="bsc.jpg" alt="The longTREC cohort at the Barcelona Supercomputing Center">
-          <div class="cap"><b>longTREC at the Barcelona Supercomputing Center</b>
-            February – March 2025 — the mid-term meeting, on the gallery above the machine hall.</div>
+        <div class="strip">
+          
+            <button class="th" type="button" aria-label="VALT Summer Course, València" data-file="course.jpg" data-mark="2026" data-title="VALT Summer Course, València" data-note="Three days of hands-on long-read analysis at I2SysBio, June 2026." data-alt="VALT Summer Course in Long-read Bioinformatics, València"><img src="course.t.jpg" alt="" loading="lazy"></button>
+          
+            <button class="th" type="button" aria-label="longTREC at the Barcelona Supercomputing Center" data-file="bsc.jpg" data-mark="2025" data-title="longTREC at the Barcelona Supercomputing Center" data-note="The mid-term meeting, February – March 2025, on the gallery above the machine hall." data-alt="The longTREC cohort at the Barcelona Supercomputing Center"><img src="bsc.t.jpg" alt="" loading="lazy"></button>
+          
+            <button class="th" type="button" aria-label="longTREC doctoral network" data-file="longtrec.jpg" data-mark="2023 – 26" data-title="longTREC doctoral network" data-note="Twelve doctoral candidates, one Horizon MSCA doctoral network." data-alt="The longTREC doctoral network cohort"><img src="longtrec.t.jpg" alt="" loading="lazy"></button>
+          
         </div>
       </div>
     </section>
@@ -416,5 +439,85 @@
 
 </div>
 
+<script>
+// Photo viewer — one stage image, a caption row, a strip of thumbnails.
+// The thumbnails are the controls: click one, or use ← → Home End while the strip
+// has focus. Clicking the left or right half of the stage steps back or forward.
+// No autoplay, no dots. The crossfade is skipped when reduced motion is set.
+(function () {
+  var REDUCED = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var calm = function () { return REDUCED && REDUCED.matches; };
+  var thumbs = function (v) { return Array.prototype.slice.call(v.querySelectorAll('.th')); };
+  var viewerOf = function (el) { return el && el.closest ? el.closest('[data-viewer]') : null; };
+  var current = function (v) { return parseInt(v.dataset.i || '0', 10) || 0; };
+
+  function show(v, i, focus) {
+    var ths = thumbs(v); if (!ths.length) return;
+    i = ((i % ths.length) + ths.length) % ths.length;
+    var t = ths[i], d = t.dataset, img = v.querySelector('.stg');
+    var swap = function () { img.src = d.file; img.alt = d.alt || ''; };
+    if (img.getAttribute('src') !== d.file) {
+      if (calm()) swap();
+      else {
+        img.classList.add('fade');
+        setTimeout(function () {
+          swap();
+          if (img.complete) img.classList.remove('fade');
+          else img.onload = function () { img.classList.remove('fade'); };
+        }, 140);
+      }
+    }
+    v.querySelector('.vmk').textContent = d.mark || '';
+    v.querySelector('.vt').textContent = d.title || '';
+    v.querySelector('.vn').textContent = d.note || '';
+    v.querySelector('.vcount').textContent = (i + 1) + ' of ' + ths.length;
+    ths.forEach(function (b, k) {
+      b.setAttribute('aria-current', k === i ? 'true' : 'false');
+      b.tabIndex = k === i ? 0 : -1;
+    });
+    v.dataset.i = i;
+    if (t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: calm() ? 'auto' : 'smooth' });
+    if (focus) t.focus({ preventScroll: true });
+    var n = ths[(i + 1) % ths.length];               // warm the next one
+    if (n && n.dataset.file) { var p = new Image(); p.src = n.dataset.file; }
+  }
+
+  document.addEventListener('click', function (e) {
+    var th = e.target.closest && e.target.closest('.th');
+    if (th) { var v = viewerOf(th); show(v, thumbs(v).indexOf(th)); return; }
+    var st = e.target.closest && e.target.closest('.stage');
+    if (st) {
+      var w = viewerOf(st), r = st.getBoundingClientRect();
+      show(w, current(w) + (e.clientX - r.left < r.width / 2 ? -1 : 1));
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    var v = viewerOf(e.target); if (!v || e.altKey || e.ctrlKey || e.metaKey) return;
+    var i = current(v);
+    if (e.key === 'ArrowRight') show(v, i + 1, true);
+    else if (e.key === 'ArrowLeft') show(v, i - 1, true);
+    else if (e.key === 'Home') show(v, 0, true);
+    else if (e.key === 'End') show(v, -1, true);
+    else return;
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function (e) {
+    var st = e.target.closest && e.target.closest('.stage'); if (!st) return;
+    var r = st.getBoundingClientRect();
+    st.classList.toggle('back', e.clientX - r.left < r.width / 2);
+  });
+
+  function init() {
+    document.querySelectorAll('[data-viewer]').forEach(function (v) {
+      if (v.dataset.ready) return;
+      v.dataset.ready = '1';
+      show(v, current(v));
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  // the design canvas renders artboards after load; pick up viewers that appear later
+  if (window.MutationObserver) new MutationObserver(init).observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
 </body>
 </html>

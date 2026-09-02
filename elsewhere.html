@@ -89,13 +89,32 @@
     .ppl { font-size: 18px; font-weight: 400; line-height: 26px; }
     .pdt { font-size: 14px; line-height: 21px; color: var(--body); margin-top: 2px; }
 
-    /* two photos on one row: the road race at 3:2 beside the snowboard as a square.
-       3fr 2fr makes their heights equal exactly — (3w)·2/3 = 2w = the square's side. */
-    .two { display: grid; grid-template-columns: 3fr 2fr; gap: 32px; max-width: 1024px; align-items: start; }
-    .one { margin: 0; }
-    .one img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 60%; }
-    .one.sq img { aspect-ratio: 1 / 1; object-position: 50% 50%; }
-    .cap { margin-top: 12px; font-size: 13px; line-height: 20px; color: var(--mute); }
+    /* ---- photographs: one stage, a caption row, a strip of thumbnails ------------
+       The stage shows a photo at its own proportions, set on the left of the measure —
+       nothing is cropped to fit. Thumbnails are the controls (and ← →); the counter
+       says there are more. Any number of photos takes the same height. */
+    .sec.photos { padding: 40px 48px 36px; }
+    .viewer { max-width: 1024px; }
+    .stage { height: 520px; cursor: e-resize; }
+    .stage.back { cursor: w-resize; }
+    .stg { display: block; height: 100%; max-width: 100%; object-fit: contain;
+           object-position: left center; transition: opacity .16s ease; }
+    .stg.fade { opacity: 0; }
+    .vc { display: grid; grid-template-columns: 116px minmax(0,1fr) 116px; gap: 24px;
+          align-items: baseline; padding: 14px 0 18px; }
+    .vmk, .vcount { font-size: 13px; color: var(--mute); font-variant-numeric: tabular-nums; }
+    .vcount { text-align: right; }
+    .vt { font-size: 16px; line-height: 24px; }
+    .vn { font-size: 14px; line-height: 21px; color: var(--mute); margin-top: 2px; }
+    .strip { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+    .strip::-webkit-scrollbar { display: none; }
+    .th { flex: none; height: 60px; padding: 0 0 5px; border: 0; background: none; cursor: pointer;
+          opacity: .45; border-bottom: 2px solid transparent; }
+    .th img { display: block; height: 100%; width: auto; }
+    .th:hover { opacity: .8; }
+    .th[aria-current="true"] { opacity: 1; border-bottom-color: var(--acc); }
+    .th:focus-visible { outline: 2px solid var(--accd); outline-offset: 3px; }
+    @media (prefers-reduced-motion: reduce) { .stg { transition: none; } }
   
     .nv .sm { display: none; }
     /* desktop: the page is a centred block with paper on both sides at every width —
@@ -131,7 +150,15 @@
 
     @media (max-width: 900px) {
       .p { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
-      .two { grid-template-columns: 1fr; gap: 20px; max-width: none; }
+
+      .sec.photos { padding: 20px 20px 24px; }
+      .stage { height: auto; aspect-ratio: 3 / 2; cursor: default; }
+      .stg { width: 100%; object-position: left top; }
+      /* year and counter share the first line; title and note take the second */
+      .vc { grid-template-columns: minmax(0,1fr) auto; gap: 2px 12px; padding: 12px 0 14px; }
+      .vc > div:nth-child(2) { grid-column: 1 / -1; grid-row: 2; }
+      .vcount { grid-column: 2; grid-row: 1; }
+      .th { height: 48px; }
     }  </style>
 </head>
 <body>
@@ -215,21 +242,106 @@
       
     </section>
 
-    <section class="sec" style="border-bottom:none">
-      <div class="two">
-        <figure class="one">
-          <img src="running.jpg" alt="Running a road race in Cardiff">
-          <figcaption class="cap">A road race in Cardiff.</figcaption>
-        </figure>
-        <figure class="one sq">
-          <img src="hemu.jpg" alt="Snowboarding in Hemu, Xinjiang">
-          <figcaption class="cap">Snowboarding in Hemu, in the Altai mountains of Xinjiang.</figcaption>
-        </figure>
+    <section class="sec photos" style="border-bottom:none">
+      <div class="viewer" data-viewer data-i="0">
+        <div class="stage"><img class="stg" src="hemu.jpg" alt="Snowboarding in Hemu, Xinjiang"></div>
+        <div class="vc">
+          <div class="vmk">Hemu</div>
+          <div><div class="vt">A snowboard in Hemu</div><div class="vn">The Altai mountains of Xinjiang, in the far north-west of China.</div></div>
+          <div class="vcount">1 of 2</div>
+        </div>
+        <div class="strip">
+          
+            <button class="th" type="button" aria-label="A snowboard in Hemu" data-file="hemu.jpg" data-mark="Hemu" data-title="A snowboard in Hemu" data-note="The Altai mountains of Xinjiang, in the far north-west of China." data-alt="Snowboarding in Hemu, Xinjiang"><img src="hemu.t.jpg" alt="" loading="lazy"></button>
+          
+            <button class="th" type="button" aria-label="A road race in Cardiff" data-file="running.jpg" data-mark="Cardiff" data-title="A road race in Cardiff" data-note="" data-alt="Running a road race in Cardiff"><img src="running.t.jpg" alt="" loading="lazy"></button>
+          
+        </div>
       </div>
     </section>
   </main>
 
 </div>
 
+<script>
+// Photo viewer — one stage image, a caption row, a strip of thumbnails.
+// The thumbnails are the controls: click one, or use ← → Home End while the strip
+// has focus. Clicking the left or right half of the stage steps back or forward.
+// No autoplay, no dots. The crossfade is skipped when reduced motion is set.
+(function () {
+  var REDUCED = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+  var calm = function () { return REDUCED && REDUCED.matches; };
+  var thumbs = function (v) { return Array.prototype.slice.call(v.querySelectorAll('.th')); };
+  var viewerOf = function (el) { return el && el.closest ? el.closest('[data-viewer]') : null; };
+  var current = function (v) { return parseInt(v.dataset.i || '0', 10) || 0; };
+
+  function show(v, i, focus) {
+    var ths = thumbs(v); if (!ths.length) return;
+    i = ((i % ths.length) + ths.length) % ths.length;
+    var t = ths[i], d = t.dataset, img = v.querySelector('.stg');
+    var swap = function () { img.src = d.file; img.alt = d.alt || ''; };
+    if (img.getAttribute('src') !== d.file) {
+      if (calm()) swap();
+      else {
+        img.classList.add('fade');
+        setTimeout(function () {
+          swap();
+          if (img.complete) img.classList.remove('fade');
+          else img.onload = function () { img.classList.remove('fade'); };
+        }, 140);
+      }
+    }
+    v.querySelector('.vmk').textContent = d.mark || '';
+    v.querySelector('.vt').textContent = d.title || '';
+    v.querySelector('.vn').textContent = d.note || '';
+    v.querySelector('.vcount').textContent = (i + 1) + ' of ' + ths.length;
+    ths.forEach(function (b, k) {
+      b.setAttribute('aria-current', k === i ? 'true' : 'false');
+      b.tabIndex = k === i ? 0 : -1;
+    });
+    v.dataset.i = i;
+    if (t.scrollIntoView) t.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: calm() ? 'auto' : 'smooth' });
+    if (focus) t.focus({ preventScroll: true });
+    var n = ths[(i + 1) % ths.length];               // warm the next one
+    if (n && n.dataset.file) { var p = new Image(); p.src = n.dataset.file; }
+  }
+
+  document.addEventListener('click', function (e) {
+    var th = e.target.closest && e.target.closest('.th');
+    if (th) { var v = viewerOf(th); show(v, thumbs(v).indexOf(th)); return; }
+    var st = e.target.closest && e.target.closest('.stage');
+    if (st) {
+      var w = viewerOf(st), r = st.getBoundingClientRect();
+      show(w, current(w) + (e.clientX - r.left < r.width / 2 ? -1 : 1));
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    var v = viewerOf(e.target); if (!v || e.altKey || e.ctrlKey || e.metaKey) return;
+    var i = current(v);
+    if (e.key === 'ArrowRight') show(v, i + 1, true);
+    else if (e.key === 'ArrowLeft') show(v, i - 1, true);
+    else if (e.key === 'Home') show(v, 0, true);
+    else if (e.key === 'End') show(v, -1, true);
+    else return;
+    e.preventDefault();
+  });
+  document.addEventListener('mousemove', function (e) {
+    var st = e.target.closest && e.target.closest('.stage'); if (!st) return;
+    var r = st.getBoundingClientRect();
+    st.classList.toggle('back', e.clientX - r.left < r.width / 2);
+  });
+
+  function init() {
+    document.querySelectorAll('[data-viewer]').forEach(function (v) {
+      if (v.dataset.ready) return;
+      v.dataset.ready = '1';
+      show(v, current(v));
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  // the design canvas renders artboards after load; pick up viewers that appear later
+  if (window.MutationObserver) new MutationObserver(init).observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
 </body>
 </html>
