@@ -131,9 +131,13 @@
     .row:hover .arw { color: var(--acc); transform: translateX(4px); }
   
     .nv .sm { display: none; }
-    /* the design frame is 1440 wide; on wider screens it sits centred with paper either side */
-    .pg { max-width: 1440px; margin: 0 auto; border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); }
-    @media (max-width: 1441px) { .pg { border-left: none; border-right: none; } }
+    /* desktop: the page is a centred block with paper on both sides at every width —
+       5vw each side (at least 24px, at most 120px), and never wider than 1280px */
+    @media (min-width: 901px) {
+      body { padding: 0 clamp(24px, 5vw, 120px); }
+      .pg { max-width: 1280px; margin: 0 auto;
+            border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); }
+    }
     @media (max-width: 900px) {
       .pg { display: flex; flex-direction: column; min-height: 100vh; }
       .rail { display: contents; }
