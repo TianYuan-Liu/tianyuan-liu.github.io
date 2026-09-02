@@ -131,6 +131,9 @@
     .row:hover .arw { color: var(--acc); transform: translateX(4px); }
   
     .nv .sm { display: none; }
+    /* the design frame is 1440 wide; on wider screens it sits centred with paper either side */
+    .pg { max-width: 1440px; margin: 0 auto; border-left: 1px solid var(--rule); border-right: 1px solid var(--rule); }
+    @media (max-width: 1441px) { .pg { border-left: none; border-right: none; } }
     @media (max-width: 900px) {
       .pg { display: flex; flex-direction: column; min-height: 100vh; }
       .rail { display: contents; }
