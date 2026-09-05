@@ -21,6 +21,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300;1,400&display=swap">
+  <!-- the coloured marks are only referenced from a :hover rule, so fetch them up front:
+       otherwise the first hover drops the ink mask before the colour file has arrived -->
+  <link rel="preload" as="image" href="logo-sqanti-epi-colour.png">
+  <link rel="preload" as="image" href="logo-paintomics-colour.svg">
+  <link rel="preload" as="image" href="logo-tellme-colour.svg">
+  <link rel="preload" as="image" href="logo-tusco-colour.svg">
+  <link rel="preload" as="image" href="logo-sqanti3-colour.png">
+  <link rel="preload" as="image" href="logo-mircure-colour.svg">
   <style>
     :root {
       /* pine, bone and copper. The figure, the mark and the page all use these
