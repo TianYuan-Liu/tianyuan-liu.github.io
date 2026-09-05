@@ -87,13 +87,18 @@
     .r { display: grid; grid-template-columns: 72px 216px minmax(0,1fr); max-width: 1024px;
          margin: 0 48px; padding: 26px 0 28px; border-bottom: 1px solid var(--rule);
          align-items: start; }
-    .mk { display: block; height: 40px; width: auto; margin-top: 1px; }
+    /* each mark is a mask over a painted box, not an <img>: the logo file only gives the
+       shape, the page gives the colour. That is what lets the mark light up with the name. */
+    .mk { display: block; height: 40px; width: 56px; margin-top: 1px; background: var(--ink);
+          -webkit-mask: var(--logo) left center / contain no-repeat;
+          mask: var(--logo) left center / contain no-repeat; }
     .nm { font-size: 22px; font-weight: 400; line-height: 28px; }
     .role { font-size: 13px; line-height: 19px; color: var(--mute); margin-top: 4px; }
     .dsc { font-size: 15px; line-height: 24px; color: var(--body); max-width: 600px; }
     .meta { margin-top: 12px; font-size: 13px; line-height: 19px; color: var(--mute); }
     .meta span { color: var(--ink); }
     .r:hover .nm { color: var(--acc); }
+    .r:hover .mk { background: var(--acc); }
     .foot { padding: 32px 48px 48px; }
   
     .nv .sm { display: none; }
@@ -130,7 +135,7 @@
 
     @media (max-width: 900px) {
       .r { grid-template-columns: 48px minmax(0,1fr); gap: 8px 12px; margin: 0 20px; padding: 20px 0; }
-      .mk { height: 30px; }
+      .mk { height: 30px; width: 42px; }
       .r > div:last-child { grid-column: 2; }
       .nm { font-size: 19px; line-height: 25px; }
       .dsc { font-size: 14px; line-height: 22px; }
@@ -176,7 +181,7 @@
     </section>
 
     <a class="r">
-      <img class="mk" src="logo-sqanti-epi.png" alt="SQANTI-epi">
+      <span class="mk" role="img" aria-label="SQANTI-epi" style="--logo:url(logo-sqanti-epi.png)"></span>
       <div>
         <div class="nm">SQANTI-epi</div>
         <div class="role">Lead developer</div>
@@ -188,7 +193,7 @@
     </a>
 
     <a class="r" href="https://paintomics.org" target="_blank" rel="noopener">
-      <img class="mk" src="logo-paintomics.svg" alt="PaintOmics AI">
+      <span class="mk" role="img" aria-label="PaintOmics AI" style="--logo:url(logo-paintomics.svg)"></span>
       <div>
         <div class="nm">PaintOmics AI</div>
         <div class="role">Lead developer</div>
@@ -200,7 +205,7 @@
     </a>
 
     <a class="r">
-      <img class="mk" src="logo-tellme.svg" alt="TELLME">
+      <span class="mk" role="img" aria-label="TELLME" style="--logo:url(logo-tellme.svg)"></span>
       <div>
         <div class="nm">TELLME</div>
         <div class="role">Lead developer</div>
@@ -212,7 +217,7 @@
     </a>
 
     <a class="r" href="https://github.com/ConesaLab/tusco-paper" target="_blank" rel="noopener">
-      <img class="mk" src="logo-tusco.svg" alt="TUSCO">
+      <span class="mk" role="img" aria-label="TUSCO" style="--logo:url(logo-tusco.svg)"></span>
       <div>
         <div class="nm">TUSCO</div>
         <div class="role">Lead developer</div>
@@ -224,7 +229,7 @@
     </a>
 
     <a class="r" href="https://github.com/ConesaLab/SQANTI3" target="_blank" rel="noopener">
-      <img class="mk" src="logo-sqanti3.png" alt="SQANTI3">
+      <span class="mk" role="img" aria-label="SQANTI3" style="--logo:url(logo-sqanti3.png)"></span>
       <div>
         <div class="nm">SQANTI3</div>
         <div class="role">Contributor</div>
@@ -236,7 +241,7 @@
     </a>
 
     <a class="r" href="https://github.com/ConesaLab/MirCure" target="_blank" rel="noopener">
-      <span class="mk"></span>
+      <span class="mk" role="img" aria-label="MirCure" style="--logo:url(logo-mircure.svg)"></span>
       <div>
         <div class="nm">MirCure</div>
         <div class="role">Co-developer</div>
