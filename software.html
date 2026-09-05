@@ -87,8 +87,10 @@
     .r { display: grid; grid-template-columns: 72px 216px minmax(0,1fr); max-width: 1024px;
          margin: 0 48px; padding: 26px 0 28px; border-bottom: 1px solid var(--rule);
          align-items: start; }
-    /* each mark is a mask over a painted box, not an <img>: the logo file only gives the
-       shape, the page gives the colour. That is what lets the mark light up with the name. */
+    /* each mark comes in two files: a one-colour version drawn in the page's ink, and the
+       tool's own colours. At rest the ink version is a mask over a painted box, so it sits
+       in the page's palette; hover swaps in the coloured original, which has the same
+       silhouette, so nothing moves — the mark simply comes into colour. */
     .mk { display: block; height: 40px; width: 56px; margin-top: 1px; background: var(--ink);
           -webkit-mask: var(--logo) left center / contain no-repeat;
           mask: var(--logo) left center / contain no-repeat; }
@@ -98,7 +100,8 @@
     .meta { margin-top: 12px; font-size: 13px; line-height: 19px; color: var(--mute); }
     .meta span { color: var(--ink); }
     .r:hover .nm { color: var(--acc); }
-    .r:hover .mk { background: var(--acc); }
+    .r:hover .mk { background: var(--logo-colour) left center / contain no-repeat;
+                   -webkit-mask: none; mask: none; }
     .foot { padding: 32px 48px 48px; }
   
     .nv .sm { display: none; }
@@ -181,7 +184,7 @@
     </section>
 
     <a class="r">
-      <span class="mk" role="img" aria-label="SQANTI-epi" style="--logo:url(logo-sqanti-epi.png)"></span>
+      <span class="mk" role="img" aria-label="SQANTI-epi" style="--logo:url(logo-sqanti-epi.png); --logo-colour:url(logo-sqanti-epi-colour.png)"></span>
       <div>
         <div class="nm">SQANTI-epi</div>
         <div class="role">Lead developer</div>
@@ -193,7 +196,7 @@
     </a>
 
     <a class="r" href="https://paintomics.org" target="_blank" rel="noopener">
-      <span class="mk" role="img" aria-label="PaintOmics AI" style="--logo:url(logo-paintomics.svg)"></span>
+      <span class="mk" role="img" aria-label="PaintOmics AI" style="--logo:url(logo-paintomics.svg); --logo-colour:url(logo-paintomics-colour.svg)"></span>
       <div>
         <div class="nm">PaintOmics AI</div>
         <div class="role">Lead developer</div>
@@ -205,7 +208,7 @@
     </a>
 
     <a class="r">
-      <span class="mk" role="img" aria-label="TELLME" style="--logo:url(logo-tellme.svg)"></span>
+      <span class="mk" role="img" aria-label="TELLME" style="--logo:url(logo-tellme.svg); --logo-colour:url(logo-tellme-colour.svg)"></span>
       <div>
         <div class="nm">TELLME</div>
         <div class="role">Lead developer</div>
@@ -217,7 +220,7 @@
     </a>
 
     <a class="r" href="https://github.com/ConesaLab/tusco-paper" target="_blank" rel="noopener">
-      <span class="mk" role="img" aria-label="TUSCO" style="--logo:url(logo-tusco.svg)"></span>
+      <span class="mk" role="img" aria-label="TUSCO" style="--logo:url(logo-tusco.svg); --logo-colour:url(logo-tusco-colour.svg)"></span>
       <div>
         <div class="nm">TUSCO</div>
         <div class="role">Lead developer</div>
@@ -229,7 +232,7 @@
     </a>
 
     <a class="r" href="https://github.com/ConesaLab/SQANTI3" target="_blank" rel="noopener">
-      <span class="mk" role="img" aria-label="SQANTI3" style="--logo:url(logo-sqanti3.png)"></span>
+      <span class="mk" role="img" aria-label="SQANTI3" style="--logo:url(logo-sqanti3.png); --logo-colour:url(logo-sqanti3-colour.png)"></span>
       <div>
         <div class="nm">SQANTI3</div>
         <div class="role">Contributor</div>
@@ -241,7 +244,7 @@
     </a>
 
     <a class="r" href="https://github.com/ConesaLab/MirCure" target="_blank" rel="noopener">
-      <span class="mk" role="img" aria-label="MirCure" style="--logo:url(logo-mircure.svg)"></span>
+      <span class="mk" role="img" aria-label="MirCure" style="--logo:url(logo-mircure.svg); --logo-colour:url(logo-mircure-colour.svg)"></span>
       <div>
         <div class="nm">MirCure</div>
         <div class="role">Co-developer</div>
