@@ -117,6 +117,16 @@
     .tt { font-size: 16px; line-height: 24px; }
     .tw { font-size: 14px; line-height: 21px; color: var(--mute); }
     .trole { font-size: 13px; color: var(--mute); margin-top: 2px; }
+    /* A row that leads somewhere is a link, the whole row being the target — the same
+       idiom as the publication and software lists. The hairline underline goes on the
+       name of the thing the link opens, wherever that name falls in the row, so the
+       underlined words say where you are going: the conference for a conference talk,
+       the meeting for a longTREC week, the host for a course or a thesis. Rows with
+       nowhere honest to send you carry no underline and stay as they are. */
+    .tv { border-bottom: 1px solid var(--hair); }
+    .t[href]:hover .tt, .t[href]:hover .tv { color: var(--acc); }
+    .t[href]:hover .tv { border-color: var(--acc); }
+    .t:focus-visible { outline: 2px solid var(--accd); outline-offset: 4px; }
   
     .nv .sm { display: none; }
     /* desktop: the page is a centred block with paper on both sides at every width —
@@ -182,7 +192,7 @@
     </nav>
     <div class="rc">
       <div class="lab">Network</div>
-      <div class="val">longTREC — an EU Horizon MSCA doctoral network training twelve doctoral candidates across European computational biology labs.</div>
+      <div class="val"><a href="https://longtrec.eu/" target="_blank" rel="noopener">longTREC</a> — an EU Horizon MSCA doctoral network training twelve doctoral candidates across European computational biology labs.</div>
     </div>
     <div class="rc">
       <div class="lab">Secondment</div>
@@ -226,213 +236,213 @@
     <section class="sec">
       <h2>Conferences</h2>
       
-        <div class="t">
+        <a class="t" href="https://congresosebibc.com/sebibc26/index.php?go=talleres" target="_blank" rel="noopener">
           <div class="tyr">2026</div>
           <div>
             <div class="tt">AI-assisted improvements in code efficiency and sustainability</div>
             <div class="trole">Invited workshop</div>
           </div>
-          <div class="tw">SEBiBC 2026, Toledo, 11–13 November — upcoming</div>
-        </div>
+          <div class="tw"><span class="tv">SEBiBC 2026</span>, Toledo, 11–13 November — upcoming</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://lrua.se/" target="_blank" rel="noopener">
           <div class="tyr">2026</div>
           <div>
             <div class="tt">SQANTI-epi: quality control and benchmarking for single-molecule chromatin</div>
             <div class="trole">Abstract submitted, decision pending</div>
           </div>
-          <div class="tw">LRUA26, Uppsala, 2–4 November — upcoming</div>
-        </div>
+          <div class="tw"><span class="tv">LRUA26</span>, Uppsala, 2–4 November — upcoming</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://www.csh-asia.org/?content/3096" target="_blank" rel="noopener">
           <div class="tyr">2026</div>
           <div>
             <div class="tt">SQANTI-epi: QC, benchmarking and regulatory-element calling</div>
             <div class="trole">Abstract submitted, decision pending</div>
           </div>
-          <div class="tw">CSH Asia Genome Biology, Suzhou, 12–16 October — upcoming</div>
-        </div>
+          <div class="tw"><span class="tv">CSH Asia Genome Biology</span>, Suzhou, 12–16 October — upcoming</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://www.iscb.org/ismb2026/scientific-programme/cosi-tracks-other-abstracts/hitseq" target="_blank" rel="noopener">
           <div class="tyr">2026</div>
           <div>
             <div class="tt">SQANTI-epi: functional and quality annotation of single-molecule epigenomic data</div>
             <div class="trole">Talk, HiTSeq track</div>
           </div>
-          <div class="tw">ISMB 2026, Washington DC, 14 July</div>
-        </div>
+          <div class="tw"><span class="tv">ISMB 2026</span>, Washington DC, 14 July</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://longtrec.eu/valt/" target="_blank" rel="noopener">
           <div class="tyr">2026</div>
           <div>
             <div class="tt">SQANTI-epi: linking chromatin state to isoform regulation</div>
             <div class="trole">Talk</div>
           </div>
-          <div class="tw">VALT Symposium, València, 29 June</div>
-        </div>
+          <div class="tw"><span class="tv">VALT Symposium</span>, València, 29 June</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://jbi2025.cnb.csic.es/programme/" target="_blank" rel="noopener">
           <div class="tyr">2025</div>
           <div>
             <div class="tt">TUSCO: a framework for evaluating transcriptome reconstruction quality</div>
             <div class="trole">Poster</div>
           </div>
-          <div class="tw">JBI 2025, Madrid, October</div>
-        </div>
+          <div class="tw"><span class="tv">JBI 2025</span>, Madrid, October</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://www.iscb.org/ismbeccb2025/scientific-programme/cosi-tracks-other-abstracts/irna" target="_blank" rel="noopener">
           <div class="tyr">2025</div>
           <div>
             <div class="tt">TUSCO: benchmarking transcriptome reconstruction</div>
             <div class="trole">Short talk, iRNA track</div>
           </div>
-          <div class="tw">ISMB/ECCB 2025, Liverpool, 20–24 July</div>
-        </div>
+          <div class="tw"><span class="tv">ISMB/ECCB 2025</span>, Liverpool, 20–24 July</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://www.lrua2024.se/program/" target="_blank" rel="noopener">
           <div class="tyr">2024</div>
           <div>
             <div class="tt">BUGSI: a framework for evaluating transcriptome quality</div>
             <div class="trole">Poster · speaker and coordinator, longTREC workshop on long-read transcriptomics</div>
           </div>
-          <div class="tw">LRUA24 — Long-Read Sequencing Uppsala, 21–23 October</div>
-        </div>
+          <div class="tw"><span class="tv">LRUA24</span> — Long-Read Sequencing Uppsala, 21–23 October</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://congresosebibc.com/sebibc24/index.php?go=programa" target="_blank" rel="noopener">
           <div class="tyr">2024</div>
           <div>
             <div class="tt">BUGSI: benchmarking universal genes with single isoforms</div>
             <div class="trole">Poster and flash talk</div>
           </div>
-          <div class="tw">1st SEBiBC Congress, 16–18 October</div>
-        </div>
+          <div class="tw"><span class="tv">1st SEBiBC Congress</span>, 16–18 October</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://eccb.org/2024/" target="_blank" rel="noopener">
           <div class="tyr">2024</div>
           <div>
             <div class="tt">SQANTI-SIM: controlled transcript novelty for lrRNA-seq benchmarking</div>
             <div class="trole">Poster</div>
           </div>
-          <div class="tw">ECCB 2024, Turku, 16–20 September</div>
-        </div>
+          <div class="tw"><span class="tv">ECCB 2024</span>, Turku, 16–20 September</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://eccb.org/2022/poster-presentations/index.htm" target="_blank" rel="noopener">
           <div class="tyr">2022</div>
           <div>
             <div class="tt">PaintOmics 4: integrative multi-omics analysis across pathway databases</div>
             <div class="trole">Poster</div>
           </div>
-          <div class="tw">ECCB 2022, Sitges, 18–21 September</div>
-        </div>
+          <div class="tw"><span class="tv">ECCB 2022</span>, Sitges, 18–21 September</div>
+        </a>
       
     </section>
 
     <section class="sec">
       <h2>Teaching and supervision</h2>
       
-        <div class="t">
+        <a class="t" >
           <div class="tyr">2026</div>
           <div>
             <div class="tt">Hands-on AI agents workshop for the institute</div>
             <div class="trole">Co-instructor</div>
           </div>
           <div class="tw">I2SysBio, València, 28 July</div>
-        </div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://conesalab.uv.es/long-reads-bioinformatics-summer-course/" target="_blank" rel="noopener">
           <div class="tyr">2026</div>
           <div>
-            <div class="tt">VALT Summer Course in Long-read Bioinformatics</div>
+            <div class="tt"><span class="tv">VALT Summer Course</span> in Long-read Bioinformatics</div>
             <div class="trole">Instructor — QC metrics, read mapping, SQANTI-reads</div>
           </div>
           <div class="tw">I2SysBio, València, 25–27 June</div>
-        </div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://masterbioinformatica.com/" target="_blank" rel="noopener">
           <div class="tyr">2026</div>
           <div>
             <div class="tt">MSc thesis internship: AlphaFold modelling of novel long-read transcripts</div>
             <div class="trole">Day-to-day supervisor</div>
           </div>
-          <div class="tw">ISCIII bioinformatics master, hosted at I2SysBio</div>
-        </div>
+          <div class="tw"><span class="tv">ISCIII bioinformatics master</span>, hosted at I2SysBio</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://www.earlham.ac.uk/events/long-reads-bioinformatics-summer-school" target="_blank" rel="noopener">
           <div class="tyr">2025</div>
           <div>
             <div class="tt">longTREC Bioinformatics Summer School</div>
             <div class="trole">Instructor — long-read mappers and QC with SQANTI-reads</div>
           </div>
-          <div class="tw">Earlham Institute, Norwich, 14–17 July</div>
-        </div>
+          <div class="tw"><span class="tv">Earlham Institute</span>, Norwich, 14–17 July</div>
+        </a>
       
-        <div class="t">
+        <a class="t" href="https://oa.upm.es/91579/" target="_blank" rel="noopener">
           <div class="tyr">2024–25</div>
           <div>
             <div class="tt">BSc thesis: biological replicates in SQANTI-SIM</div>
             <div class="trole">Co-supervisor</div>
           </div>
-          <div class="tw">Universidad Politécnica de Madrid, hosted at I2SysBio</div>
-        </div>
+          <div class="tw"><span class="tv">Universidad Politécnica de Madrid</span>, hosted at I2SysBio</div>
+        </a>
       
     </section>
 
     <section class="sec" style="border-bottom:none">
       <h2>longTREC</h2>
       
-        <div class="t">
+        <a class="t" >
           <div class="tyr">2026</div>
           <div>
             <div class="tt">longTREC closing meeting</div>
             <div class="trole">Participant — mini-grant proposal</div>
           </div>
           <div class="tw">I2SysBio, València, 2–3 July</div>
-        </div>
+        </a>
       
-        <div class="t">
+        <a class="t" >
           <div class="tyr">2025</div>
           <div>
             <div class="tt">longTREC Mid-term meeting</div>
             <div class="trole">Participant — software-engineering and presentation training</div>
           </div>
           <div class="tw">BSC and CRG, Barcelona, 24 February – 4 March</div>
-        </div>
+        </a>
       
-        <div class="t">
+        <a class="t" >
           <div class="tyr">2024</div>
           <div>
             <div class="tt">longTREC Fellows’ retreat</div>
             <div class="trole">Participant — project presentation</div>
           </div>
           <div class="tw">Stockholm University, 24–30 October</div>
-        </div>
+        </a>
       
-        <div class="t">
+        <a class="t" >
           <div class="tyr">2024</div>
           <div>
             <div class="tt">longTREC Focus on Research meeting</div>
             <div class="trole">Participant — project talk and mid-term review</div>
           </div>
           <div class="tw">Université Côte d’Azur and IPMC, Nice, 9–15 March</div>
-        </div>
+        </a>
       
-        <div class="t">
+        <a class="t" >
           <div class="tyr">2023</div>
           <div>
             <div class="tt">longTREC Welcome Retreat</div>
             <div class="trole">Participant — doctoral candidate presentation</div>
           </div>
           <div class="tw">I2SysBio and Jardí Botànic, València, 27 November – 1 December</div>
-        </div>
+        </a>
       
-        <div class="t">
+        <a class="t" >
           <div class="tyr">2023–25</div>
           <div>
             <div class="tt">longTREC journal club and seminar series</div>
             <div class="trole">Coordinator</div>
           </div>
           <div class="tw">Online</div>
-        </div>
+        </a>
       
     </section>
   </main>
