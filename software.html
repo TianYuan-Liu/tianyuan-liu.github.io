@@ -98,7 +98,11 @@
     /* each mark comes in two files: a one-colour version drawn in the page's ink, and the
        tool's own colours. At rest the ink version is a mask over a painted box, so it sits
        in the page's palette; hover swaps in the coloured original, which has the same
-       silhouette, so nothing moves — the mark simply comes into colour. */
+       silhouette, so nothing moves — the mark simply comes into colour. The row declares
+       both files and a tone, the mark's lead colour, which the name takes on hover so the
+       pair reads as one thing; the page's copper stays out of the rows. Where the lead
+       colour is too pale to carry 22 px text on paper, the tone is the same hue a step
+       deeper (MirCure), or the shade the tool itself uses on a light ground (PaintOmics). */
     .mk { display: block; height: 40px; width: 56px; margin-top: 1px; background: var(--ink);
           -webkit-mask: var(--logo) left center / contain no-repeat;
           mask: var(--logo) left center / contain no-repeat; }
@@ -107,7 +111,7 @@
     .dsc { font-size: 15px; line-height: 24px; color: var(--body); max-width: 600px; }
     .meta { margin-top: 12px; font-size: 13px; line-height: 19px; color: var(--mute); }
     .meta span { color: var(--ink); }
-    .r:hover .nm { color: var(--acc); }
+    .r:hover .nm { color: var(--tone); }
     .r:hover .mk { background: var(--logo-colour) left center / contain no-repeat;
                    -webkit-mask: none; mask: none; }
     .foot { padding: 32px 48px 48px; }
@@ -191,8 +195,8 @@
         and each is built so you can check what the AI claimed.</div>
     </section>
 
-    <a class="r">
-      <span class="mk" role="img" aria-label="SQANTI-epi" style="--logo:url(logo-sqanti-epi.png); --logo-colour:url(logo-sqanti-epi-colour.png)"></span>
+    <a class="r" style="--logo:url(logo-sqanti-epi.png); --logo-colour:url(logo-sqanti-epi-colour.png); --tone:#758E71">
+      <span class="mk" role="img" aria-label="SQANTI-epi"></span>
       <div>
         <div class="nm">SQANTI-epi</div>
         <div class="role">Lead developer</div>
@@ -203,8 +207,8 @@
       </div>
     </a>
 
-    <a class="r" href="https://paintomics.org" target="_blank" rel="noopener">
-      <span class="mk" role="img" aria-label="PaintOmics AI" style="--logo:url(logo-paintomics.svg); --logo-colour:url(logo-paintomics-colour.svg)"></span>
+    <a class="r" href="https://paintomics.org" target="_blank" rel="noopener" style="--logo:url(logo-paintomics.svg); --logo-colour:url(logo-paintomics-colour.svg); --tone:#2C7FDD">
+      <span class="mk" role="img" aria-label="PaintOmics AI"></span>
       <div>
         <div class="nm">PaintOmics AI</div>
         <div class="role">Lead developer</div>
@@ -215,8 +219,8 @@
       </div>
     </a>
 
-    <a class="r">
-      <span class="mk" role="img" aria-label="TELLME" style="--logo:url(logo-tellme.svg); --logo-colour:url(logo-tellme-colour.svg)"></span>
+    <a class="r" style="--logo:url(logo-tellme.svg); --logo-colour:url(logo-tellme-colour.svg); --tone:#159463">
+      <span class="mk" role="img" aria-label="TELLME"></span>
       <div>
         <div class="nm">TELLME</div>
         <div class="role">Lead developer</div>
@@ -227,8 +231,8 @@
       </div>
     </a>
 
-    <a class="r" href="https://github.com/ConesaLab/tusco-paper" target="_blank" rel="noopener">
-      <span class="mk" role="img" aria-label="TUSCO" style="--logo:url(logo-tusco.svg); --logo-colour:url(logo-tusco-colour.svg)"></span>
+    <a class="r" href="https://github.com/ConesaLab/tusco-paper" target="_blank" rel="noopener" style="--logo:url(logo-tusco.svg); --logo-colour:url(logo-tusco-colour.svg); --tone:#15918A">
+      <span class="mk" role="img" aria-label="TUSCO"></span>
       <div>
         <div class="nm">TUSCO</div>
         <div class="role">Lead developer</div>
@@ -239,8 +243,8 @@
       </div>
     </a>
 
-    <a class="r" href="https://github.com/ConesaLab/SQANTI3" target="_blank" rel="noopener">
-      <span class="mk" role="img" aria-label="SQANTI3" style="--logo:url(logo-sqanti3.png); --logo-colour:url(logo-sqanti3-colour.png)"></span>
+    <a class="r" href="https://github.com/ConesaLab/SQANTI3" target="_blank" rel="noopener" style="--logo:url(logo-sqanti3.png); --logo-colour:url(logo-sqanti3-colour.png); --tone:#EE446F">
+      <span class="mk" role="img" aria-label="SQANTI3"></span>
       <div>
         <div class="nm">SQANTI3</div>
         <div class="role">Contributor</div>
@@ -251,8 +255,8 @@
       </div>
     </a>
 
-    <a class="r" href="https://github.com/ConesaLab/MirCure" target="_blank" rel="noopener">
-      <span class="mk" role="img" aria-label="MirCure" style="--logo:url(logo-mircure.svg); --logo-colour:url(logo-mircure-colour.svg)"></span>
+    <a class="r" href="https://github.com/ConesaLab/MirCure" target="_blank" rel="noopener" style="--logo:url(logo-mircure.svg); --logo-colour:url(logo-mircure-colour.svg); --tone:#42A276">
+      <span class="mk" role="img" aria-label="MirCure"></span>
       <div>
         <div class="nm">MirCure</div>
         <div class="role">Co-developer</div>
