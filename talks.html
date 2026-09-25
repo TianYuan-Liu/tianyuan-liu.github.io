@@ -172,7 +172,33 @@
       .th { height: 48px; }
       .t { grid-template-columns: 1fr; gap: 2px; padding: 12px 0; }
       .tt { font-size: 15px; line-height: 23px; }
-    }  </style>
+    }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    .pg { -moz-osx-font-smoothing: grayscale; font-kerning: normal;
+          text-rendering: optimizeLegibility; -webkit-tap-highlight-color: transparent; }
+    .pg ::selection { background: color-mix(in srgb, var(--acc) 20%, var(--paper)); color: var(--ink); }
+    /* the same copper ring the photo viewer already uses, now on every link and control */
+    .pg a:focus-visible, .pg button:focus-visible { outline: 2px solid var(--accd); outline-offset: 3px;
+                                                    border-radius: 1px; }
+    /* the nav strip scrolls on a phone and would clip an outside ring, so the tab rings inside */
+    .pg .nv:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--accd); }
+    /* hover colours ease in rather than snap; the row arrows already move this way */
+    .pg a, .nv, .tab, .th, .rttl, .ttl, .nm, .tt, .tv, .ot, .val a, .rfoot a, .more {
+      transition: color .15s ease, border-color .15s ease, background-color .15s ease, opacity .15s ease; }
+    .soon { color: var(--accd); white-space: nowrap; }
+    @media (min-width: 901px) {
+      .rail { scrollbar-width: thin; scrollbar-color: var(--hair) transparent; }
+    }
+    @media (max-width: 900px) {
+      /* the active tab is underlined under its word, not across the gutter padding */
+      .nv.on, .nv.on:hover { border-bottom-color: transparent;
+        background: linear-gradient(var(--acc), var(--acc)) 0 calc(100% + 12px) / 100% 2px no-repeat;
+        background-origin: content-box; background-clip: padding-box; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pg *, .pg *::before, .pg *::after { transition-duration: 0s !important; }
+    }
+  </style>
 </head>
 <body>
 <div class="pg" style="--acc: #A8562F; --accd: #96512e">
@@ -242,25 +268,25 @@
             <div class="tt">AI-assisted improvements in code efficiency and sustainability</div>
             <div class="trole">Invited workshop</div>
           </div>
-          <div class="tw"><span class="tv">SEBiBC 2026</span>, Toledo, 11–13 November — upcoming</div>
+          <div class="tw"><span class="tv">SEBiBC 2026</span>, Toledo, 11–13 November — <span class="soon">upcoming</span></div>
         </a>
       
         <a class="t" href="https://lrua.se/" target="_blank" rel="noopener">
           <div class="tyr">2026</div>
           <div>
-            <div class="tt">SQANTI-epi: quality control and benchmarking for single-molecule chromatin</div>
-            <div class="trole">Abstract submitted, decision pending</div>
+            <div class="tt">SQANTI-epi: quality control and benchmarking for single-molecule chromatin structure on PacBio and nanopore</div>
+            <div class="trole">Talk, Multiomics session</div>
           </div>
-          <div class="tw"><span class="tv">LRUA26</span>, Uppsala, 2–4 November — upcoming</div>
+          <div class="tw"><span class="tv">LRUA26</span>, Uppsala, 2–4 November — <span class="soon">upcoming</span></div>
         </a>
       
         <a class="t" href="https://www.csh-asia.org/?content/3096" target="_blank" rel="noopener">
           <div class="tyr">2026</div>
           <div>
-            <div class="tt">SQANTI-epi: QC, benchmarking and regulatory-element calling</div>
-            <div class="trole">Abstract submitted, decision pending</div>
+            <div class="tt">SQANTI-epi: quality control, benchmarking and regulatory-element calling for single-molecule chromatin</div>
+            <div class="trole">Talk and poster</div>
           </div>
-          <div class="tw"><span class="tv">CSH Asia Genome Biology</span>, Suzhou, 12–16 October — upcoming</div>
+          <div class="tw"><span class="tv">CSH Asia Genome Biology</span>, Suzhou, 12–16 October — <span class="soon">upcoming</span></div>
         </a>
       
         <a class="t" href="https://www.iscb.org/ismb2026/scientific-programme/cosi-tracks-other-abstracts/hitseq" target="_blank" rel="noopener">
@@ -374,15 +400,6 @@
             <div class="trole">Instructor — long-read mappers and QC with SQANTI-reads</div>
           </div>
           <div class="tw"><span class="tv">Earlham Institute</span>, Norwich, 14–17 July</div>
-        </a>
-      
-        <a class="t" href="https://oa.upm.es/91579/" target="_blank" rel="noopener">
-          <div class="tyr">2024–25</div>
-          <div>
-            <div class="tt">BSc thesis: biological replicates in SQANTI-SIM</div>
-            <div class="trole">Co-supervisor</div>
-          </div>
-          <div class="tw"><span class="tv">Universidad Politécnica de Madrid</span>, hosted at I2SysBio</div>
         </a>
       
     </section>
