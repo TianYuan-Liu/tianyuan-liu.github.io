@@ -154,7 +154,33 @@
       .r > div:last-child { grid-column: 2; }
       .nm { font-size: 19px; line-height: 25px; }
       .dsc { font-size: 14px; line-height: 22px; }
-    }  </style>
+    }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+    .pg { -moz-osx-font-smoothing: grayscale; font-kerning: normal;
+          text-rendering: optimizeLegibility; -webkit-tap-highlight-color: transparent; }
+    .pg ::selection { background: color-mix(in srgb, var(--acc) 20%, var(--paper)); color: var(--ink); }
+    /* the same copper ring the photo viewer already uses, now on every link and control */
+    .pg a:focus-visible, .pg button:focus-visible { outline: 2px solid var(--accd); outline-offset: 3px;
+                                                    border-radius: 1px; }
+    /* the nav strip scrolls on a phone and would clip an outside ring, so the tab rings inside */
+    .pg .nv:focus-visible { outline: none; box-shadow: inset 0 0 0 2px var(--accd); }
+    /* hover colours ease in rather than snap; the row arrows already move this way */
+    .pg a, .nv, .tab, .th, .rttl, .ttl, .nm, .tt, .tv, .ot, .val a, .rfoot a, .more {
+      transition: color .15s ease, border-color .15s ease, background-color .15s ease, opacity .15s ease; }
+    .soon { color: var(--accd); white-space: nowrap; }
+    @media (min-width: 901px) {
+      .rail { scrollbar-width: thin; scrollbar-color: var(--hair) transparent; }
+    }
+    @media (max-width: 900px) {
+      /* the active tab is underlined under its word, not across the gutter padding */
+      .nv.on, .nv.on:hover { border-bottom-color: transparent;
+        background: linear-gradient(var(--acc), var(--acc)) 0 calc(100% + 12px) / 100% 2px no-repeat;
+        background-origin: content-box; background-clip: padding-box; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .pg *, .pg *::before, .pg *::after { transition-duration: 0s !important; }
+    }
+  </style>
 </head>
 <body>
 <div class="pg" style="--acc: #A8562F; --accd: #96512e">
